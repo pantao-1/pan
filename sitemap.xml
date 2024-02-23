@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://pantao-1.github.io/2019/08/27/blog-open-source/</loc>
+    
+    <lastmod>2024-02-23T07:01:42.164Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://pantao-1.github.io/tags/index.html</loc>
     
     <lastmod>2024-01-24T11:36:05.573Z</lastmod>
@@ -61,13 +68,6 @@
     <loc>https://pantao-1.github.io/about/index.html</loc>
     
     <lastmod>2024-01-24T11:36:05.027Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://pantao-1.github.io/2019/08/27/blog-open-source/</loc>
-    
-    <lastmod>2024-01-24T11:36:04.951Z</lastmod>
     
   </url>
   
