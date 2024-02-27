@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Pan的博客</title>
+  <title>潘的博客</title>
   
-  <subtitle>Pan的博客</subtitle>
+  <subtitle>潘的博客</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/pantao-1/pantao-1.github.io.git/"/>
-  <updated>2024-02-26T11:10:31.813Z</updated>
+  <updated>2024-02-27T07:03:23.890Z</updated>
   <id>https://github.com/pantao-1/pantao-1.github.io.git/</id>
   
   <author>
-    <name>Pan</name>
+    <name>潘</name>
     
   </author>
   
@@ -21,7 +21,7 @@
     <link href="https://github.com/pantao-1/pantao-1.github.io.git/2019/08/27/blog-open-source/"/>
     <id>https://github.com/pantao-1/pantao-1.github.io.git/2019/08/27/blog-open-source/</id>
     <published>2019-08-27T03:41:03.000Z</published>
-    <updated>2024-02-26T11:10:31.813Z</updated>
+    <updated>2024-02-27T07:03:23.890Z</updated>
     
     <summary type="html">
     
