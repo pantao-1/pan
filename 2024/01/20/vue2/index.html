@@ -6,12 +6,12 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="SpingBoot, UESTC CV DeepLearning MachineLearning 潘 sunhw Hongwei 计算机视觉 深度学习">
+    <meta name="keywords" content="vue, UESTC CV DeepLearning MachineLearning 潘 sunhw Hongwei 计算机视觉 深度学习">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY">
-    <meta name="description" content="SpingBoot创建项目步骤
-创建项目步骤：(必须确保网络能正常访问) 1.File-&amp;gt;new -&amp;gt;module 2.选择spring initializr 3.配置项： 1.group name(默认包)
- 2.name(发">
+    <meta name="description" content="vue封装数据发送后台可以使用将数据转换为JSON格式或者使用FormData对象封装数据(键值对)键对应后台的实体类,值前端要传入后台的值
+    JSON:                         
+    const data">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +19,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>SpingBoot | 创意驿站</title>
+    <title>vue | 创意驿站</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -618,13 +618,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        SpingBoot
+                        vue
                     </div>
                 </div>
             </div>
@@ -736,12 +736,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/SpingBoot/" target="_blank">
-                                <span class="chip bg-color">SpingBoot</span>
+                            <a href="/tags/笔记/" target="_blank">
+                                <span class="chip bg-color">笔记</span>
                             </a>
                         
-                            <a href="/tags/jsp/" target="_blank">
-                                <span class="chip bg-color">jsp</span>
+                            <a href="/tags/vue/" target="_blank">
+                                <span class="chip bg-color">vue</span>
                             </a>
                         
                     </div>
@@ -752,8 +752,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/SpingBoot/" class="post-category" target="_blank">
-                                SpingBoot
+                            <a href="/categories/vue/" class="post-category" target="_blank">
+                                vue
                             </a>
                         
                     </div>
@@ -764,7 +764,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-02-23
+                    2024-01-20
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -778,14 +778,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        3.3k
+                        1.7k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        15 分
+                        6 分
                     </div>
                     
                 
@@ -802,520 +802,24 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="SpingBoot"><a href="#SpingBoot" class="headerlink" title="SpingBoot"></a>SpingBoot</h1><h1 id="创建项目步骤"><a href="#创建项目步骤" class="headerlink" title="创建项目步骤"></a>创建项目步骤</h1><ul>
-<li>创建项目步骤：(必须确保网络能正常访问)<br> 1.File-&gt;new -&gt;module<br> 2.选择spring initializr<br> 3.配置项：<pre><code> 1.group name(默认包)
- 2.name(发布包的名称)
- 3.type(maven项目）
- 4.packaging(打包方式，jar,war)</code></pre> 4.选择需要的依赖，选中的依赖会自动配置到pom.xml文件中，也可以手动配置<br> 5.修改pom.xml文件<pre><code> 1.修改jdk版本为本机环境对应的版本
- 2.修改打包方式
- 3.添加需要的依赖
- 4.配置web路径，资源路径</code></pre> 6.启动项目（找到BootdemoApplication类） </li>
-</ul>
+                <h1 id="vue封装数据发送后台"><a href="#vue封装数据发送后台" class="headerlink" title="vue封装数据发送后台"></a>vue封装数据发送后台</h1><pre><code>可以使用将数据转换为JSON格式或者使用FormData对象封装数据(键值对)键对应后台的实体类,值前端要传入后台的值
+    JSON:                         
+    const data = {               
+      name: 'John',              
+      age: 25,                    
+    };
+    JSON.stringify(data)
+
+    FormData:
+    const formData = new FormData();
+    formData.append('name', 'John');
+    formData.append('age', 25);</code></pre><hr>
+<h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><p>1.创建一个表单并添加一个文件输入控件，例如使用<code>&lt;input type="file"&gt;</code>元素。<br>2.监听文件选择事件，获取用户选择的文件，并将其存储在Vue组件的data属性中。<br>3.通过FormData（表单数据对象）来构造包含上传文件的表单数据。<br>4.发送POST请求到服务器，携带表单数据，以此来完成文件上传操作。<br>后端，我们使用了Spring Boot框架和Spring MVC来处理文件上传。通过@RequestParam注解来获取上传的文件，MultipartFile对象包含了文件的各种信息和操作方法。我们使用getBytes()方法获取文件的字节数组，然后使用Files.write()方法将文件写入目标路径。</p>
+<h1 id="vue生命周期"><a href="#vue生命周期" class="headerlink" title="vue生命周期"></a>vue生命周期</h1><p>1.<code>beforeCreate</code>：实例刚被创建，数据观测和事件配置之前，此时无法访问到data和methods等实例属性。<br>2.<code>created</code>：实例已经被创建，数据观测和事件配置完成，此时可以访问到data和methods等实例属性，但未挂载到DOM上。<br>3.<code>beforeMount</code>：在挂载开始之前被调用，此时模板编译已完成，但DOM还未生成。<br>4.<code>mounted</code>：实例已经挂载到DOM上，此时可以对DOM进行操作，访问到挂载的元素。<br>5.<code>beforeUpdate</code>：数据更新时，重新渲染之前被调用，此时数据已经更新，但DOM尚未重新渲染。<br>6.<code>updated</code>：数据更新并且DOM重新渲染完成后被调用。<br>7.<code>beforeDestroy</code>：实例销毁之前被调用，此时实例仍然完全可用。<br>8.<code>destroyed</code>：实例销毁后被调用，此时实例及其所有的事件监听器和观察者都被移除。<br>9.<code>beforeCreate</code>和<code>created</code>钩子函数会在组件实例化之前执行；<br>10.<code>beforeDestroy</code>和<code>destroyed</code>钩子函数会在组件销毁之前执行。</p>
+<h1 id="vue权限控制"><a href="#vue权限控制" class="headerlink" title="vue权限控制"></a>vue权限控制</h1><p>当我们开发一个应用程序时，经常需要对用户的权限进行控制，以决定用户能够执行哪些操作或看到哪些内容。<br>首先，我们需要在Vue中注册这个自定义指令。指令是一种特殊的功能，可以在HTML标签中使用，用来控制元素的行为。在这个例子中，我们将指令名称设置为<code>permission</code>。<br>接下来，我们定义了指令的具体实现逻辑。当一个元素被插入到页面中时，指令会生效。在这个函数中，我们首先从浏览器的存储中（<code>sessionStorage</code>）获取用户的权限列表，这个列表中存储了用户拥有的权限信息。<br>然后，我们判断当前权限列表中是否包含了指令的绑定值（也就是所需的权限）。如果不包含，说明用户没有相应的权限。在这种情况下，我们会进行以下操作：<br>如果元素不是按钮，我们会将它隐藏起来，使用户无法看到它。<br>如果元素是按钮，我们会禁用它，使用户无法点击它。<br>此外，我们还给禁用的按钮添加了一个CSS类名<code>is-disabled</code>，通过添加这个类名，我们可以为禁用的按钮添加一些特定的样式。<br>最后，代码中还添加了一个自定义方法<code>contains</code>，用来判断一个数组是否包含某个特定的值。尽管在这段代码中没有使用到这个方法，但可能会在其他地方使用到它。<br>总的来说，这段代码实现了一个功能权限判断的指令。它通过用户的权限列表来控制应用程序中的元素是否可见或可操作，从而实现了权限控制的功能。</p>
+<h1 id="spingmvc的一些注解"><a href="#spingmvc的一些注解" class="headerlink" title="spingmvc的一些注解"></a>spingmvc的一些注解</h1><p>1.@Controller：用于标识一个类为Spring MVC的控制器，可以处理HTTP请求并返回响应结果。<br>2.@RequestMapping：用于映射请求路径和控制器方法，支持路径变量、请求参数和HTTP方法等条件。<br>3.@PathVariable：用于获取URL中的路径变量，可以将其绑定到方法参数中。<br>4.@RequestParam：用于获取请求参数，可以将其绑定到方法参数中，并支持参数默认值、必填项和名称映射等配置。<br>5.@ResponseBody：用于标识方法返回的结果直接写入HTTP响应体中，而不是通过模板引擎渲染页面。<br>6.@ModelAttribute：用于在请求处理方法执行前将请求参数绑定到模型对象中，以便在视图中进行显示。<br>7.@SessionAttribute：用于将模型对象存储到会话中，以便多个请求之间共享数据。<br>8.@CookieValue：用于获取指定名称的cookie值，并将其绑定到方法参数中。<br>9.@InitBinder：用于定制数据绑定操作，例如对日期格式进行转换、防止XSS攻击等。<br>10.@ExceptionHandler：用于捕获控制器内部抛出的异常，并进行统一处理和返回错误信息。</p>
+<h1 id="spingmvc返回数据到前端的几种方式"><a href="#spingmvc返回数据到前端的几种方式" class="headerlink" title="spingmvc返回数据到前端的几种方式"></a>spingmvc返回数据到前端的几种方式</h1><p>1.使用@ResponseBody注解：在控制器的方法上添加@ResponseBody注解，可以将方法的返回值直接写入HTTP响应体中。Spring MVC会自动将返回值转换为JSON、XML等格式，并设置正确的Content-Type头。<br>2.返回ModelAndView对象：ModelAndView是Spring MVC中常用的返回类型，它包含了要返回给视图的数据和视图名称。<br>3.使用Model和Map：可以在方法参数中添加Model或Map类型的参数，然后将数据存储到其中。Spring MVC会自动将这些数据传递给视图。<br>4.使用HttpServletRequest和HttpServletResponse：可以直接在方法参数中声明HttpServletRequest和HttpServletResponse对象，并使用它们进行数据读取和写入。</p>
 <hr>
-<h1 id="SpingBoot整合mybatis"><a href="#SpingBoot整合mybatis" class="headerlink" title="SpingBoot整合mybatis"></a>SpingBoot整合mybatis</h1><ul>
-<li>修改pom.xml<br>1.添加Mybatis和Mysql依赖 <!--Spring Boot Mybatis 依赖 -->
-<pre><code> &lt;dependency&gt;
-     &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;
-     &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;
-     &lt;version&gt;1.2.0&lt;/version&gt;
- &lt;/dependency&gt;
- &lt;!-- MySQL 连接驱动依赖 --&gt;
- &lt;dependency&gt;
-     &lt;groupId&gt;mysql&lt;/groupId&gt;
-     &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
-     &lt;version&gt;5.1.39&lt;/version&gt;
- &lt;/dependency&gt;</code></pre>2.修改application.properties<pre><code>SpringBoot配置数据源
-spring.datasource.driver-class-name= com.mysql.jdbc.Driver
-spring.datasource.url= jdbc:mysql://192.168.0.188:3306/boot?useUnicode=truecharacterEncoding=utf8&amp;  useSSL=false
-spring.datasource.username= root
-spring.datasource.password= 11111111</code></pre>3.配置扫描实体类和配置扫描 映射文件        <pre><code>mybatis-plus.type-aliases-package=com.example.luo.entity
-mybatis-plus.mapper-locations=classpath*:/mapper/*.xml</code></pre>4.配置扫描 dao<pre><code> 只需要在 SpringBoot启动 main方法中添加注解 @MapperScan 扫描Dao 组件
- //配置mybatis dao所在的包
- @MapperScan("com.lgr.bootdemo1.dao")
- //启动类注解，包含main方法的类要添加该注解，作为程序的入口
- @SpringBootApplication
- public class Bootdemo1Application {
-     public static void main(String[] args) {
-         SpringApplication.run(Bootdemo1Application.class, args);
-     }
- }</code></pre>5.创建数据库表<br>6.创建实体类<br> 注意:实体类路基需和第三步配置的包路径一致。<br>7.创建dao接口<br> 注意:dao接口需和第四步创建的包路径下<br>8.创建dao接口映射文件(.xml编写简便的sql语句)<br> 注意:接口映射文件必须配置在第三步配置路径下<br>9.在项目的test文件夹下项目包里有一个测试类<br> 导入实体类如：<pre><code> @Autowired
- BatchDAO batchDAO;</code></pre> 编写测试类,选中运行<pre><code>  @Test
- void contextLoads() {
- BatchVo batchVo = new BatchVo();
- batchVo.setBatchId(0);
- batchVo.setBatchName("2024暑假社会实践");
- batchVo.setState(1);
- batchVo.setRemark("");
- batchDAO.insert(batchVo);
- }</code></pre></li>
-</ul>
-<hr>
-<h1 id="SpringBoot-整合-SpringMVC"><a href="#SpringBoot-整合-SpringMVC" class="headerlink" title="SpringBoot 整合 SpringMVC"></a>SpringBoot 整合 SpringMVC</h1><pre><code>  1.在pom文件中添加
-  &lt;dependency&gt;
-        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
-  &lt;/dependency&gt;
-  -----------------------------------------------------------
-  spring-boot-starter-web包自动帮我们引入了web模块开发需要的相关jar包
-  此 starter pom 内嵌tomcat、servlet、SpringMVC 依赖。
-  启动后会默认启动tomcat 占用8080端口
-  没有加此依赖SpringBoot 不能启动 tomcat容器。
-  -----------------------------------------------------------
-  spring-boot-starter-web 所做的事
-  自动配置内嵌Servlet 容器 tomcat
-  自动配置http编码 utf-8
-  自动配置SpringMVC
-  自动配置文件上传(文件上传大小限制)
-  ------------------------------------------------------------
-  添加完spring-boot-starter-web 依赖 就可以使用SpringMVC的注解
-  @Controller 表示这是一个控制层bean
-  @RequestMapping  处理请求地址映射注解
-  @GetMapping  使用get 方式处理请求地址映射注解
-  @PostMapping  使用post 方式处理请求地址映射注解
-  @ResponseBody  设置JSON格式响应
-  注意：此时没有配置视图页面，只能显示html页面，不能解析JSP或者thymeleaf 等模板引擎。
-        添加@ResponseBody 注解可以返回JSON格式数据</code></pre><p>  SpringBoot 返回JSON数据<br>  创建IndexController(控制器)<br>  注意：IndexController 一定要创建在SpringBoot 启动main方法同级，或者下级，不然扫描不到Controller<br>  使用方法：和SpringMVC 没有区别<br>  项目启动：和普通的web项目启动不同，在SpringBoot中，启动web项目也是启动main方法，和普通的java项目没有区别！<br>  访问：<a href="http://localhost:8080/getMapJSON" target="_blank" rel="noopener">http://localhost:8080/getMapJSON</a> 得到json数据。</p>
-<pre><code>  @GetMapping("/json")
-  @ResponseBody
-  public  Map json(){
-      Map&lt;String,Object&gt; map = new HashMap&lt;String,Object&gt;();
-          map.put("值1","1");
-          map.put("值2","2");
-      return map;
-  }</code></pre><h1 id="SpringBoot-整合-JSP"><a href="#SpringBoot-整合-JSP" class="headerlink" title="SpringBoot 整合 JSP"></a>SpringBoot 整合 JSP</h1><pre><code>修改pom.xml添加依赖，修改打包信息
-修改application.properties 配置文件
-添加webapp文件夹，添加WEB-INF文件夹
-修改idea web项目配置
-修改Controller
-添加jsp页面</code></pre><p>1.修改pom.xml 增加依赖</p>
-<pre><code>&lt;!-- jsp支持 --&gt;
-&lt;dependency&gt;
-  &lt;groupId&gt;org.apache.tomcat.embed&lt;/groupId&gt;
-  &lt;artifactId&gt;tomcat-embed-jasper&lt;/artifactId&gt;
-&lt;/dependency&gt;
-
-&lt;!-- jstl标签库 --&gt;
-&lt;dependency&gt;
-  &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
-  &lt;artifactId&gt;jstl&lt;/artifactId&gt;
-&lt;/dependency&gt;</code></pre><p>2.修改pom.xml修改项目打包设置</p>
-<pre><code>      &lt;build&gt;
-       &lt;plugins&gt;
-       &lt;plugin&gt;
-        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-        &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
-        &lt;!-- 默认版本和SpringBoot版本一致，
-            使用高版本的打包方式，不能正确打包。 --&gt;
-        &lt;version&gt;1.4.2.RELEASE&lt;/version&gt;
-       &lt;/plugin&gt;
-       &lt;/plugins&gt;
-      &lt;resources&gt;
-
-      &lt;!-- 打包时将jsp文件拷贝到META-INF目录下--&gt;
-
-      &lt;resource&gt;
-        &lt;!-- 指定处理哪个目录下的资源文件 --&gt;
-        &lt;directory&gt;${basedir}/src/main/webapp&lt;/directory&gt;
-        &lt;!--注意此次必须要放在此目录下才能被访问到--&gt;
-        &lt;targetPath&gt;META-INF/resources&lt;/targetPath&gt;
-        &lt;includes&gt;
-            &lt;include&gt;**/**&lt;/include&gt;
-        &lt;/includes&gt;
-      &lt;/resource&gt;
-
-      &lt;resource&gt;
-        &lt;directory&gt;src/main/resources&lt;/directory&gt;
-        &lt;includes&gt;
-            &lt;include&gt;**/**&lt;/include&gt;
-        &lt;/includes&gt;
-      &lt;/resource&gt;
-  &lt;/resources&gt;
-&lt;/build&gt;</code></pre><p>3.修改application.properties 配置文件</p>
-<pre><code>spring.mvc.view.suffix=.jsp
-spring.mvc.view.prefix=/WEB-INF/jsp/</code></pre><p>4.添加webapp文件夹</p>
-<pre><code>1、在src --&gt; main 下添加webapp文件夹
-2、在webapp下添加WEB-INF文件夹
-3、在WEB-INF下添加jsp文件夹
-4、在jsp文件夹下添加hello.jsp
-5、配置idea指定WEB目录</code></pre><hr>
-<h1 id="控制器传递数据的六种方式"><a href="#控制器传递数据的六种方式" class="headerlink" title="控制器传递数据的六种方式"></a>控制器传递数据的六种方式</h1><pre><code>1.Map
-   @GetMapping("/map")
-   public String getMap(Map map){
-    map.put("msg1","map对象返回的值");
-    return "test";
-   }
-
-2.Model
-      @GetMapping("/model")
-public String getModel(Model model){
-    model.addAttribute("msg2","Model对象返回的值");
-    return "test";
-}
-
-3.ModelMap
-      @GetMapping("/modelMap")
-public String getModelMap(ModelMap model){
-    model.addAttribute("msg3","ModelMap对象返回的值");
-    return "test";
-}
-
-4.ModelAndView
-   @GetMapping("/modelAndView")
-public ModelAndView getModelMap(){
-    ModelAndView mv = new ModelAndView();
-    //设置返回值
-    mv.addObject("msg4","ModelAndView对象返回的值");
-    //设置页面名称
-    mv.setViewName("test");
-    return mv;
-}
-
-5.servlet的返回方式
-   @GetMapping("/request")
-    public String getRequest(HttpServletRequest request, HttpServletResponse response){
-    //设置返回值
-    request.setAttribute("msg5","request对象返回的值");
-    return "test";
-}
-
-6.返回JSON格式数据需要使用@ResponseBody注解
-@GetMapping("/json")
-@ResponseBody
-public BatchVo getJson(){
-    BatchVo batchVo = new BatchVo();
-    batchVo.setBatchId(0);
-    batchVo.setBatchName("2024暑假社会实践");
-    batchVo.setState(1);
-    batchVo.setRemark("");
-    return batchVo;
-}</code></pre><hr>
-<h1 id="控制器接收前端数据的六种方式"><a href="#控制器接收前端数据的六种方式" class="headerlink" title="控制器接收前端数据的六种方式"></a>控制器接收前端数据的六种方式</h1><p> 方法一:</p>
-<pre><code>  前端：
-      function login(){
-        var user = $("#userName").val();
-        var pass = $("#password").val();
-        if(user==""){
-            alert("请输入用户名称");
-            //设置焦点
-            $("#userName").focus();
-            return false;
-        }
-        if(pass==""){
-            alert("密码不能为空");
-            //设置焦点
-            $("#password").focus();
-            return false;
-        }
-        //使用jquery的post方法提交数据
-        $.post(
-           '/login/login',
-            {
-                'userName': user,
-                'password':pass
-            },
-            //回调函数,接收后端返回的值,data变量就是后端返回的值
-            function(data){
-                alert(data.userName);
-            }
-        );
-        return true;
-    }
-    控制器：
-      //jquery的post方法提交数据
-      @PostMapping("/login")
-      @ResponseBody
-      public UserVo login(UserVo userVo){
-          System.out.println(userVo);
-          return userVo;
-      }</code></pre><p>方法二:</p>
-<pre><code>  前端：
-        function login1(){
-        var user = $("#userName").val();
-        var pass = $("#password").val();
-
-        if(user==""){
-            alert("请输入用户名称");
-            //设置焦点
-            $("#userName").focus();
-            return false;
-        }
-        if(pass==""){
-            alert("密码不能为空");
-            //设置焦点
-            $("#password").focus();
-            return false;
-        }
-        //使用jquery的post方法提交数据
-        $.get(
-            '/login/login1?userName=' + user + '&amp;password=' + pass,
-            //回调函数,接收后端返回的值,data变量就是后端返回的值
-            function(data){
-                alert(data.userName);
-            }
-        );
-        return true;
-    }
-    控制器：
-          //jquery的get方法提交数据
-          @GetMapping("/login1")
-          //login/login1?userName=张三&amp;password=1234
-          //使用@RequestParam注解接收参数,表单返回的变量与控制器的变量名称不一致时，可以转换
-          @ResponseBody
-          public UserVo login1(@RequestParam("userName") String name,@RequestParam("password") String pass){
-              UserVo userVo = new UserVo();
-              userVo.setUserName(name);
-              userVo.setPassword(pass);
-              System.out.println(userVo);
-              return userVo;
-          }</code></pre><p>方法三:</p>
-<pre><code>  前端：
-      function login2(){
-        var user = $("#userName").val();
-        var pass = $("#password").val();
-
-        if(user==""){
-            alert("请输入用户名称");
-            //设置焦点
-            $("#userName").focus();
-            return false;
-        }
-        if(pass==""){
-            alert("密码不能为空");
-            //设置焦点
-            $("#password").focus();
-            return false;
-        }
-        //使用jquery的post方法提交数据
-        $.get(
-            '/login/login2?userName=' + user + '&amp;password=' + pass,
-            //回调函数,接收后端返回的值,data变量就是后端返回的值
-            function(data){
-                alert(data.userName);
-            }
-        );
-        return true;
-    }
-    控制器：
-        //jquery的get方法提交数据
-        @GetMapping("/login2")
-        //login/login2?userName=张三&amp;password=1234
-        //使用@RequestParam注解接收参数,表单返回的变量与控制器的变量名称不一致时，可以转换
-        @ResponseBody
-        public UserVo login2(String userName,String password){
-            UserVo userVo = new UserVo();
-            userVo.setUserName(userName);
-            userVo.setPassword(password);
-            System.out.println(userVo);
-            return userVo;
-        }</code></pre><p>方法四:</p>
-<pre><code>  前端：
-     function login3(){
-        var user = $("#userName").val();
-        var pass = $("#password").val();
-
-        if(user==""){
-            alert("请输入用户名称");
-            //设置焦点
-            $("#userName").focus();
-            return false;
-        }
-        if(pass==""){
-            alert("密码不能为空");
-            //设置焦点
-            $("#password").focus();
-            return false;
-        }
-        //使用jquery的post方法提交数据
-        $.get(
-            '/login/login3/' + user + '/' + pass,
-            //回调函数,接收后端返回的值,data变量就是后端返回的值
-            function(data){
-                alert(data.userName);
-            }
-        );
-        return true;
-    }
-    控制器：
-         //jquery的get方法提交数据
-        @GetMapping("/login3/{userName}/{password}")
-        //login/login3/张三/1234
-        //使用@RequestParam注解接收参数,表单返回的变量与控制器的变量名称不一致时，可以转换
-        @ResponseBody
-        public UserVo login3(@PathVariable("userName") String userName,@PathVariable("password") String password){
-            UserVo userVo = new UserVo();
-            userVo.setUserName(userName);
-            userVo.setPassword(password);
-            System.out.println(userVo);
-            return userVo;
-        }</code></pre><p>方法五:</p>
-<pre><code>  前端：
-    function login4(){
-        var user = $("#userName").val();
-        var pass = $("#password").val();
-
-        if(user==""){
-            alert("请输入用户名称");
-            //设置焦点
-            $("#userName").focus();
-            return false;
-        }
-        if(pass==""){
-            alert("密码不能为空");
-            //设置焦点
-            $("#password").focus();
-            return false;
-        }
-        return true;
-    }
-    控制器：
-            @PostMapping("/login4")
-      public String login4(UserVo userVo){
-          System.out.println(userVo);
-          return "index";
-      }
-        //接收表单提交数据(效果与login4一样)
-    @PostMapping("/login5")
-    public String login5(HttpServletRequest request, HttpServletResponse response){
-        UserVo userVo = new UserVo();
-        userVo.setUserName(request.getParameter("userName"));
-        userVo.setPassword(request.getParameter("password"));
-        System.out.println(userVo);
-        return "index";
-    }</code></pre><h1 id="SpringBoot整合使用druid连接池"><a href="#SpringBoot整合使用druid连接池" class="headerlink" title="SpringBoot整合使用druid连接池"></a>SpringBoot整合使用druid连接池</h1><p> 1.添加MybatisPlusConfig类</p>
-<pre><code>   //启动事务
-   @EnableTransactionManagement
-        /*
-            配置文件
-            使用了@Configuration注解的类就是配置类，程序启动时系统会自动执行，
-            该注解的作用就是把以往的xml文件转换为java类
-            @Bean注解，就是配置一个bean，相当于mvc项目中的xml配置文件中bean
-        */
-        @Configuration
-        public class MybatisPlusConfig {
-            /**
-            * 分页插件,创建一个分页的拦截器
-            */
-            @Bean
-            public PaginationInterceptor paginationInterceptor() {
-                return  new PaginationInterceptor();
-            }
-        }</code></pre><p>  2.添加以下依赖</p>
-<pre><code>&lt;!-- mysql驱动 --&gt;
-    &lt;dependency&gt;
-        &lt;groupId&gt;mysql&lt;/groupId&gt;
-        &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
-        &lt;version&gt;5.1.48&lt;/version&gt;
-    &lt;/dependency&gt;
-    &lt;!-- mybatis-plus --&gt;
-    &lt;dependency&gt;
-        &lt;groupId&gt;com.baomidou&lt;/groupId&gt;
-        &lt;artifactId&gt;mybatis-plus-boot-starter&lt;/artifactId&gt;
-        &lt;version&gt;3.3.1&lt;/version&gt;
-    &lt;/dependency&gt;
-    &lt;!--druid连接池--&gt;
-    &lt;dependency&gt;
-        &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
-        &lt;artifactId&gt;druid-spring-boot-starter&lt;/artifactId&gt;
-        &lt;version&gt;1.1.20&lt;/version&gt;
-    &lt;/dependency&gt;</code></pre><p>  3.添加配置</p>
-<pre><code>#所有参数的配置，冒号后面必须有一个空格
-        #配置tomcat的端口
-        server:
-        port: 8888
-        servlet:
-            #项目访问路径
-            context-path: /
-            #session的有效期为30分钟，m分钟，s秒
-            session:
-            timeout: 30m
-        #数据源配置
-        spring:
-        datasource:
-            driver-class-name: com.mysql.jdbc.Driver
-            url: jdbc:mysql://localhost:3306/boot?allowMultiQueries=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false&amp;allowPublicKeyRetrieval=true
-            username: root
-            password: 11111111
-            druid:
-            #配置监控url
-            stat-view-servlet:
-                #连接池的监控地址
-                url-pattern: /druid/*
-                #登录名
-                login-username: root
-                #登录密码
-                login-password: 123456
-                enabled: true
-            #初始值
-            initial-size: 10
-            #最大连接数
-            max-active: 100
-            #最小连接数
-            min-idle: 10
-            #最大等待时间
-            max-wait: 60000
-            pool-prepared-statements: true
-            max-pool-prepared-statement-per-connection-size: 20
-            time-between-eviction-runs-millis: 60000
-            min-evictable-idle-time-millis: 300000
-            #validation-query: SELECT 1 FROM DUAL
-            validation-query: SELECT 1 'X'
-            test-while-idle: true
-            test-on-borrow: false
-            test-on-return: false
-            filters: stat,wall,slf4j
-        mvc:
-            #配置jsp文件存放的根路径
-            view:
-            #后缀
-            suffix: .jsp
-            #前缀
-            prefix: /WEB-INF/jsp/
-        http:
-            #设置字符编码
-            encoding:
-            charset: UTF-8
-
-#mybatis配置(dao在启动类用@MapperScan注解配置)
-mybatis-plus:
-#mybatis的映射文件路径，放在resources的子文件夹内
-mapper-locations: classpath:mapper/*.xml
-#配置别名，javabean的包路径
-type-aliases-package: com.lgr.bootdemo1.entity
-global-config:
-    #数据库相关配置
-    db-config:
-    #主键类型  AUTO:"数据库ID自增", INPUT:"用户输入ID", ID_WORKER:"全局唯一ID (数字类型唯一ID)", UUID:"全局唯一ID UUID";
-    id-type: AUTO
-    #字段策略 IGNORED:"忽略判断",NOT_NULL:"非 NULL 判断"),NOT_EMPTY:"非空判断"
-    field-strategy: NOT_NULL
-    #驼峰下划线转换
-    column-underline: true
-    #逻辑已删除值(默认为 1)
-    logic-delete-value: 1
-    #逻辑未删除值(默认为 0)
-    logic-not-delete-value: 0
-    banner: false
-configuration:
-    # 是否开启自动驼峰命名规则映射:从数据库列名到Java属性驼峰命名的类似映射
-    map-underscore-to-camel-case: true
-    cache-enabled: false
-    call-setters-on-nulls: true
-    jdbc-type-for-null: 'null'
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl</code></pre><p>3.添加dao包新建BatchDAO类继承bean(extends BaseMapper<batchvo>) 添加service包下面添加impl包<br>4.service添加BatchServiceDAO类继承bean(extends IService<batchvo>)<br>5.impl包添加BatchServiceDaoImpl继承service包下面的BatchServiceDAO类(implements BatchServiceDAO )<br>6.BatchServiceDaoImpl引入dao</batchvo></batchvo></p>
-<pre><code>@Autowired
-BatchDAO batchDAO;</code></pre><p>7.右键生成方法注意添加启动事务@Transactional(查询操作外)<br>比如无条件查询表</p>
-<pre><code>@Override
-public List&lt;User&gt; list() {
-    return userDao.selectList(null);
-}</code></pre><p>8.添加控制器引入</p>
-<pre><code>@Autowired
-private UserServiceDao userServiceDao;
-实现方法
- @RequestMapping("/list")
-public List&lt;User&gt; getEricUserList(){
-    return userServiceDao.list();
-}
-页面通过项目ip/druid/访问监控页面</code></pre><hr>
 <blockquote>
 <p><strong>最后，如果项目和教程对你有所帮助或者你看见了还算比较喜欢，欢迎给我<code>star</code>，谢谢您！</strong></p>
 </blockquote>
@@ -1323,8 +827,7 @@ public List&lt;User&gt; getEricUserList(){
 
 <table>
   <tbody><tr>
-    <td><img width="100" src="https://sunhwee.com/medias/reward/alipay.bmp"></td>  
-      <td><img width="100" src="https://sunhwee.com/medias/reward/wechat.bmp"></td>    <td><img width="100" src="https://sunhwee.com/medias/reward/zan.png"></td>   
+    <td><img width="100" src="https://sunhwee.com/medias/reward/alipay.bmp"></td>    <td><img width="100" src="https://sunhwee.com/medias/reward/wechat.bmp"></td>    <td><img width="100" src="https://sunhwee.com/medias/reward/zan.png"></td>   
   </tr>
 </tbody></table>
 <script>
@@ -1495,7 +998,7 @@ public List&lt;User&gt; getEricUserList(){
                     </span>
                     <a href="https://github.com/pantao-1/pantao-1.github.io.git" class="b-link-green">创意驿站</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2024/02/23/spingboot/" class="b-link-green">SpingBoot</a>
+                    <a href="/2024/01/20/vue2/" class="b-link-green">vue</a>
                 </p>
             </div>
 
@@ -1518,7 +1021,7 @@ public List&lt;User&gt; getEricUserList(){
         repo: 'shw2018.github.io',
         owner: 'shw2018',
         admin: ["shw2018"],
-        id: '2024/02/23/spingboot/',
+        id: '2024/01/20/vue2/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1841,31 +1344,31 @@ public List&lt;User&gt; getEricUserList(){
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2024/03/15/redis/">
+                <a href="/2024/01/20/shiro/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="redis">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Shiro">
                         
-                        <span class="card-title">redis</span>
+                        <span class="card-title">Shiro</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            整合了一些redis的笔记
+                            整合了一些Shiro的笔记
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2024-03-15
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2024-01-20
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/redis/" class="post-category" target="_blank">
-                                    redis
+                            <a href="/categories/Shiro/" class="post-category" target="_blank">
+                                    Shiro
                                 </a>
                             
                             
@@ -1875,12 +1378,12 @@ public List&lt;User&gt; getEricUserList(){
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/笔记/" target="_blank">
-                        <span class="chip bg-color">笔记</span>
+                    <a href="/tags/Shiro/" target="_blank">
+                        <span class="chip bg-color">Shiro</span>
                     </a>
                     
-                    <a href="/tags/redis/" target="_blank">
-                        <span class="chip bg-color">redis</span>
+                    <a href="/tags/笔记/" target="_blank">
+                        <span class="chip bg-color">笔记</span>
                     </a>
                     
                 </div>
@@ -1891,49 +1394,50 @@ public List&lt;User&gt; getEricUserList(){
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/22/echarts/">
+                <a href="/2024/01/20/vue2/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="ECharts">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="vue">
                         
-                        <span class="card-title">ECharts</span>
+                        <span class="card-title">vue</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            提供了丰富的图表类型和交互能力，使用户能够通过简单的配置生成各种各样的图表，包括但不限于折线图、柱状图、散点图、饼图、雷达图、地图等。ECharts 遵循 Apache-2.0 开源协议，免费商用。
+                            整合了一些vue的笔记
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2024-01-22
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2024-01-20
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/ECharts/" class="post-category" target="_blank">
-                                    ECharts
+                            <a href="/categories/vue/" class="post-category" target="_blank">
+                                    vue
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/ECharts/" target="_blank">
-                        <span class="chip bg-color">ECharts</span>
+                    <a href="/tags/笔记/" target="_blank">
+                        <span class="chip bg-color">笔记</span>
                     </a>
                     
-                    <a href="/tags/JavaScript/" target="_blank">
-                        <span class="chip bg-color">JavaScript</span>
+                    <a href="/tags/vue/" target="_blank">
+                        <span class="chip bg-color">vue</span>
                     </a>
                     
                 </div>
