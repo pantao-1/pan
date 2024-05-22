@@ -6,13 +6,20 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="redis, UESTC CV DeepLearning MachineLearning 潘 sunhw Hongwei 计算机视觉 深度学习">
+    <meta name="keywords" content="Redis面试题, UESTC CV DeepLearning MachineLearning 潘 sunhw Hongwei 计算机视觉 深度学习">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY">
-    <meta name="description" content="数据库分类——关系型数据库
-    关系型数据库模型是把复杂的数据结构归结为简单的二元关系（即二维表格形式）。 包含Mysql、Oracle、SqlServer等。随着互联网WEB2.0时代的到来，面临着高并发、高性能的一系列的挑战。
+    <meta name="description" content="Redis面试题一、Redis为什么快？
+基于内存
 
-—">
+
+内存读写效率远高于磁盘读写，省去磁盘IO操作
+
+
+存储形式
+
+
+Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存储，即哈希表结构。哈希表的特性就在O时间复杂度就可以获取">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +27,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>redis | 创意驿站</title>
+    <title>Redis面试题 | 创意驿站</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -619,13 +626,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        redis
+                        Redis面试题
                     </div>
                 </div>
             </div>
@@ -737,12 +744,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/笔记/" target="_blank">
-                                <span class="chip bg-color">笔记</span>
-                            </a>
-                        
-                            <a href="/tags/redis/" target="_blank">
-                                <span class="chip bg-color">redis</span>
+                            <a href="/tags/Redis/" target="_blank">
+                                <span class="chip bg-color">Redis</span>
                             </a>
                         
                     </div>
@@ -753,8 +756,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/redis/" class="post-category" target="_blank">
-                                redis
+                            <a href="/categories/Redis/" class="post-category" target="_blank">
+                                Redis
                             </a>
                         
                     </div>
@@ -765,7 +768,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-03-15
+                    2024-01-22
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -779,14 +782,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        2.2k
+                        5.9k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        8 分
+                        20 分
                     </div>
                     
                 
@@ -803,86 +806,564 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="数据库分类"><a href="#数据库分类" class="headerlink" title="数据库分类"></a>数据库分类</h1><pre><code>——关系型数据库
-    关系型数据库模型是把复杂的数据结构归结为简单的二元关系（即二维表格形式）。 包含Mysql、Oracle、SqlServer等。随着互联网WEB2.0时代的到来，面临着高并发、高性能的一系列的挑战。
+                <h1 id="Redis面试题"><a href="#Redis面试题" class="headerlink" title="Redis面试题"></a>Redis面试题</h1><h3 id="一、Redis为什么快？"><a href="#一、Redis为什么快？" class="headerlink" title="一、Redis为什么快？"></a>一、Redis为什么快？</h3><ol>
+<li>基于内存</li>
+</ol>
+<ul>
+<li>内存读写效率远高于磁盘读写，省去磁盘IO操作</li>
+</ul>
+<ol start="2">
+<li>存储形式</li>
+</ol>
+<ul>
+<li>Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存储，即哈希表结构。哈希表的特性就在O时间复杂度就可以获取对应的值。</li>
+</ul>
+<ol start="3">
+<li>编码</li>
+</ol>
+<ul>
+<li>支持多种数据结构及编码，针对不通业务场景，都有相对应的数据结构和编码。</li>
+<li>根据元素的数量，有一个阈值，小于阈值和大于阈值的编码不同。</li>
+</ul>
+<ol start="4">
+<li>IO多路复用</li>
+</ol>
+<ul>
+<li>核心思想：让单个线程去监视多个连接，某个连接就绪，就触发读写事件。即可以单个线程处理多个客户端连接，无需创建和维护过多的进程和线程。</li>
+</ul>
+<ol start="5">
+<li>单线程，避免上下文切换</li>
+</ol>
+<ul>
+<li>内部执行命令为单线程，避免上下文切换带来的CPU开销</li>
+</ul>
+<ol start="6">
+<li>渐进式ReHash、缓存时间戳</li>
+</ol>
+<ul>
+<li>（1）渐进式ReHash：<ul>
+<li>Redis使用全局哈希表来保存所有键值对，</li>
+<li>哈希表相当于一个数组，数组的每个元素称为一个哈系桶，每个哈系桶中保存了键值对的数据。</li>
+<li>数据增加到一定阈值，数组扩容会导致数据发生移动，此时访问会发生阻塞</li>
+<li>渐进式ReHash：把一次性大量拷贝（数组移动）的开销，分摊到多次处理请求的过程中。</li>
+<li>Redis默认使用两种全局哈希表，开始插入数据时默认使用哈希表1，此时哈希表2并没有被分配空间。随着数据逐步增多，开始执行ReHash。</li>
+<li>给哈希表2分配更大的空间，</li>
+</ul>
+</li>
+</ul>
+<ol start="7">
+<li>缓存时间戳：</li>
+</ol>
+<ul>
+<li>业务中需要用到时间戳时，一般会使用System.currentTimeMillis()或者New Date()等方式获取系统的毫秒时间戳，每一次获取都是一次系统调用（需要调用操作系统中对应的函数，涉及上下文切换），相对比较耗时。</li>
+<li>作为单线程的Redis承受不起，因此它由一个定时任务，每毫秒更新一次缓存，获取时间都是从缓存中直接拿。</li>
+</ul>
+<h3 id="二、Redis合适的应用场景"><a href="#二、Redis合适的应用场景" class="headerlink" title="二、Redis合适的应用场景"></a>二、Redis合适的应用场景</h3><ol>
+<li><p>常用基本数据类型（5种）<br> 名称    英文名    作用域<br> 字符串    String    缓存、计数器、分布式Session<br> 哈希    Hash    存放对象<br> 列表    list    消息队列、文章列表<br> 集合    set    标签、随机数、社交图谱<br> 有序集合    ZSET    排行榜<br> Bitmaps    Bitmaps    布隆过滤器<br> HyperLogLog    HyperLogLog    UV<br> Geo    Geo    Redis3.2推出的，地理位置定位，用于存储地理位置信息，并对存储的信息进行操作</p>
+</li>
+<li><p>字符串（String）</p>
+</li>
+</ol>
+<ul>
+<li><p>命令的时间复杂度：</p>
+<ul>
+<li><p>字符串这些命令中除了del、mset、mget支持多个键的批量操作，时间复杂度和键的个数相关，为O(n)，getrange的字符串长度相关，也是O(n)，其余的命令基本上都是O(1)的时间复杂度，在速度上还是非常快的。</p>
+</li>
+<li><p>（1）缓存</p>
+<ul>
+<li>具有支撑高并发的特性，能起到加速读写的作用，降低后端压力</li>
+</ul>
+</li>
+<li><p>（2）计数器</p>
+<ul>
+<li>实现快速计数、查询缓存的功能，同时数据可以异步落地到其他数据源</li>
+</ul>
+</li>
+<li><p>（3）分布式会话（共享Session）</p>
+<ul>
+<li>问题：如果一个分布式Web服务将用户的Session信息保存在各自服务器中，出于负载均衡的考虑，分布式服务会将用户的访问均衡到不同服务器上，用户刷新一次访问，可能会发现需要重新登录。</li>
+</ul>
+</li>
+<li><p>解决方案：使用Redis将用户的Session进行集中管理，这种情况下只要保证Redis是高可用和扩展性的，每次用户更新或查询登录信息都直接从Redis集中获取。</p>
+</li>
+<li><p>（4）分布式锁</p>
+</li>
+<li><p>场景：同一个资源并发访问，如秒杀、下单减库存等场景。适用String数据类型。</p>
+<ul>
+<li>synchronize和reentrantlock本地锁性能较低</li>
+<li>并发量不大，可以使用数据库悲观锁，但并发量大的场景会降抵DB性能</li>
+<li>可以使用Redis Setnx来实现分布式锁</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>哈希（Hash）</li>
+</ol>
+<ul>
+<li>适用于存放对象，相较于String类型存储对象时效率开发效率更高。</li>
+</ul>
+<ol start="3">
+<li>列表（list）</li>
+</ol>
+<ul>
+<li>用来存储多个有序字符串<ul>
+<li>（1）消息队列</li>
+<li>lpush+brpop命令组合即可实现阻塞队列，生产环境客户端使用lpush从列表左侧插入元素，多个消费者客户端使用brpop命令阻塞式的”抢“列表尾部的元素，多个客户端保证了消费的负载均衡和高可用性。</li>
+<li>（2）文章列表</li>
+<li>每个用户有属于自己的文章列表，现需要分页展示文章列表。此时可以考虑使用列表，有序，且支持按照索引范围获取元素。</li>
+<li>还可实现其他数据结构</li>
+</ul>
+</li>
+</ul>
+<ol start="4">
+<li><p>集合（set）</p>
+<ul>
+<li>（1）标签（tag）</li>
+<li>例如一个用户可能对娱乐、体育感兴趣，另一个用户可能对历史、新闻感兴趣，这些兴趣点就是标签。通过这些数据可以得到喜欢同一个标签的人，这些数据对于用户体验以及增强用户粘度比较重要。</li>
+<li>（2）随机数（抽奖活动）</li>
+<li>（3）社交网络</li>
+<li>点赞、粉丝、共同好友、喜好、推送、下拉刷新等功能。适用String数据类型和hash类型，存放对象使用hash类型。</li>
+<li>标签适用于set数据类型，例如一个用户可能对娱乐、体育感兴趣，另一个用户可能对历史、新闻感兴趣，这些兴趣点就是标签。通过这些数据可以得到喜欢同一个标签的人，这些数据对于用户体验以及增强用户粘度比较重要。</li>
+<li>排行榜适用于有序集合（ZSET）数据类型。</li>
+</ul>
+</li>
+<li><p>有序集合（ZSET）</p>
+<ul>
+<li>（1）排行榜</li>
+<li>多维度：时间、浏览量、获赞数等等。</li>
+</ul>
+</li>
+</ol>
+<h3 id="Redis高级数据结构"><a href="#Redis高级数据结构" class="headerlink" title="Redis高级数据结构"></a>Redis高级数据结构</h3><ol start="6">
+<li>Bitmaps</li>
+</ol>
+<ul>
+<li>可以实现对位的操作，单独提供了一套命令，可以想象成以位为单位的数组，数组下标叫做偏移量。<ul>
+<li>用于数据量上亿的场景下，例如几亿用户系统签到，去重登录次数统计，某用户是否在线状态等。此时不可能给每个用户一个key。</li>
+<li>这里需要用到位操作，使用setbit、getbit、bitcount命令。</li>
+<li>原理：redis内构一个足够长的数组，每个数组只能是0和1两个值，数组下标表示用户id，这个几亿长的大数组就可以通过下标和元素值（0和1）来构建一个记忆系统。<img width="100" src="/medias/avatars/122.png"></li>
+<li>（1）布隆过滤器<img width="100" src="/medias/avatars/123.png">
+</li>
+</ul>
+</li>
+</ul>
+<ol start="7">
+<li>HyperLogLog </li>
+</ol>
+<ul>
+<li>（1）UV</li>
+<li>统计每个网页每天的UC数据，HyperLogLog提供不精确的去重计数方案，误差0.81%<img width="100" src="/medias/avatars/124.png">
 
-——非关系型数据库
-    新型的数据库模型，也被称为NOSQL数据库，NOSQL本意是“NOT ONLY SQL”，并不是彻底要彻底否定关系型数据库，而是作为传统关系型数据库的一个有效补充。包含 memcached （纯内存），redis（持久化缓存），mongodb（文档的数据库） </code></pre><hr>
-<h1 id="非关系型数据库的分类"><a href="#非关系型数据库的分类" class="headerlink" title="非关系型数据库的分类"></a>非关系型数据库的分类</h1><pre><code>1、key-value存储数据库
-   键值数据库就类似传统语言中使用哈希表，可以通过key来添加、查询或删除数据，因为使用key主键访问，所以会获得很高的性能及扩展性 。典型产品：Memcached、Redis、MemcacheDB、BerkeleyDB 
-2、列存储（Column-oriedted）数据库
-  了解即可，一般公司用不到，典型产品：Cassandra,HBase 
-3、面向文档（Document-Oriented）数据库
-  面向文档数据库会将数据以文档的形式存储。每个文档都是自包含的数据单元，是一系列数据项的集合。典型产品：MorgoDB、CouchDB 
-4、图形（Graph）数据库</code></pre><h1 id="Redis安装"><a href="#Redis安装" class="headerlink" title="Redis安装"></a>Redis安装</h1><pre><code>Window下安装：
-下载地址：https://github.com/MSOpenTech/redis/releases
-选择64位的ZIP压缩包点击下载，下载完成后解压，并将解压后的文件夹重命名为redis，方便后面使用</code></pre><h1 id="运行Redis服务"><a href="#运行Redis服务" class="headerlink" title="运行Redis服务"></a>运行Redis服务</h1><pre><code>1、使用cmd命令行进入解压后的redis目录
-2、在redis目录下 运行redis-server redis.windows.conf，启动redis服务，此时当关闭命令窗口redis服务也会关闭，其中后面的redis.window.conf可以省略
-将Redis配成windows服务
-3、可以将redis服务安装成windows服务，在redis目录下的命令窗口输入：redis-server --service-install redis.windows.conf即可
-4、查看服务是否配置成功，右键计算机—管理—服务，查找是否有Redis服务，如果启动，代表windows上的redis服务已经配置成功，redis服务已经启动。</code></pre><h1 id="Redis命令"><a href="#Redis命令" class="headerlink" title="Redis命令"></a>Redis命令</h1><pre><code>启动本机Redis客户端：redis–cli ，此命令连接到本机的Redis服务，同时用PING命令检测本机Redis服务是否启动
-连接远程Redis服务： redis–cli –h host –p port –a “password”
-其中host为远程主机IP地址
-Port为远程Redis服务端口号
-Password为远程Redis服务密码
-用客户端连接了redis服务之后，就可以在当前命令行里使用redis命令来操作redis数据库了</code></pre><h1 id="Redis数据类型"><a href="#Redis数据类型" class="headerlink" title="Redis数据类型"></a>Redis数据类型</h1><pre><code>1.Redis支持五种数据类型：string（字符串），hash（哈希），list（列表），set（集合）及zset(有序集合)。
-2.String（字符串）（最常用）
-string是redis最基本的类型，是二进制安全的。意思是redis的string可以包含任何数据。比如jpg图片或者序列化的对象 。
-string类型是Redis最基本的数据类型，一个键最大能存储512MB。
-3.Hash（哈希）（常用）
-Redis hash 是一个键值(key=&gt;value)对集合。
-Redis hash 是一个 string 类型的 key和 value 的映射表，hash 特别适合用于存储对象，相当于java中的Map集合。
-4.List（列表）
-Redis 列表是简单的字符串列表，按照插入顺序排序。你可以添加一个元素到列表的头部（左边）或者尾部（右边）。
-列表最多可存储 232 - 1 元素 (4294967295, 每个列表可存储40多亿)。
-5.Set（集合）
-Redis的Set是string类型的无序集合。
-集合是通过哈希表实现的，所以添加，删除，查找的复杂度都是O(1)。
-6.zset(sorted set：有序集合)（了解）
-Redis zset 和 set 一样也是string类型元素的集合,且不允许重复的成员。
-不同的是每个元素都会关联一个double类型的分数。redis正是通过分数来为集合中的成员进行从小到大的排序。
-zset的成员是唯一的,但分数(score)却可以重复。</code></pre><h1 id="Redis键命令"><a href="#Redis键命令" class="headerlink" title="Redis键命令"></a>Redis键命令</h1><pre><code>SET keyname value     新建一个键值对，keyname为键名，value为存储的值
-DEL keyname     删除一个已存在的key，keyname为键名，成功返回1，失败返回0
-EXISTS keyname    判断一个key是否存在，keyname为键名，
-RENAME key newkey    重命名一个已存在的key，key为原来的键名，newkey为新键名
-EXPIRE key seconds    给一个已存在的key设置过期时间，key为键名，seconds为秒数
-PERSIST keyname    移除key的过期时间，key将永久保持，keyname为键名
-TTL keyname    以毫秒数返回key的剩余时间，keyname为键名
-RANDOMKEY     从当前数据库随机返回一个key</code></pre><h1 id="Redis字符串命令"><a href="#Redis字符串命令" class="headerlink" title="Redis字符串命令"></a>Redis字符串命令</h1><pre><code>SET keyname value    设置一个键值对，keyname为键名，value为存储的值
-GET keyname    获取指定key对应的值，keyname为键名
-GETSET keyname value    将指定key的值设为value，同时返回该key原来的旧值
-MGET key1 key2…..    获取所有给定key的值
-GETRANGE key start end    获取指定key里的截取字符串，start为起始位置，end为结束位置
-STRLEN keyname    获取指定key里存储字符串的长度
-INCR keyname    给指定key里存储的数字增1
-APPEND keyname value    给指定key里存储的字符串末尾追加value</code></pre><h1 id="Redis哈希（hash）命令"><a href="#Redis哈希（hash）命令" class="headerlink" title="Redis哈希（hash）命令"></a>Redis哈希（hash）命令</h1><pre><code>HMSET key field1 “value1”…    同时将多个 field-value (域-值)对设置到哈希表 key 中
-HDEL key field1 field2…..    删除指定key哈希表的一个或者多个字段，key为哈希表的键，field1为哈希表里的字段名
-HEXISTS key field    查看指定key的哈希表内是否存在field字段
-HGET key field    获取指定key的哈希表内的field字段存储的值
-HGETALL key    获取指定key的哈希表的所有字段和值
-HKEYS key    获取指定key的哈希表中所有的字段
-HMGET key field1 field2…    获取指定key的哈希表中所有指定字段的值
-HVALS key    获取指定key的哈希表中所有的值</code></pre><h1 id="Redis列表（List）命令"><a href="#Redis列表（List）命令" class="headerlink" title="Redis列表（List）命令"></a>Redis列表（List）命令</h1><pre><code>LPUSH key value1 value2…    同时将一个或多个值插入到列表头部，设定的key即为列表的键
-LPUSH key value1 value2…    同时将一个或多个值插入到已存在的key对应的列表头部
-LPOP key    移出并获取指定key的列表中的第一个元素
-LINDEX key index    通过索引获取指定key的列表中的元素，index从0开始
-LRANGE key start stop    通过索引获取指定key的列表中某个范围的元素
-RPOP key    移出并获取指定key的列表中最后一个元素
-LREM key count value    移出指定key的列表中，与value相等的元素 count&gt;0 从表头开始搜索；count&lt;0 从表尾开始搜索；count=0 移出所有与value相等的元素
-LTRIM key start stop    截取指定key的列表中的部分元素</code></pre><h1 id="Redis集合（Set）命令"><a href="#Redis集合（Set）命令" class="headerlink" title="Redis集合（Set）命令"></a>Redis集合（Set）命令</h1><pre><code>SADD key m1 m2…    向集合添加一个或多个成员
-SCARD key    获取指定key对应的集合内的成员数
-SINTER key1 key2    获取所有给定集合的交集
-SISMEMBER key member    判断member元素是否是集合key的成员
-SMEMBERS key    返回集合中的所有成员
-SPOP key    返回并移出集合中的一个随机元素
-SREM key member1 member2    移除集合中一个或多个成员</code></pre><h1 id="Redis缓存特性"><a href="#Redis缓存特性" class="headerlink" title="Redis缓存特性"></a>Redis缓存特性</h1><pre><code>性能极高 
-– Redis能读的速度是110000次/s,写的速度是81000次/s ，而关系型数据库MYSQL读写速度仅为2000次/s左右。
-丰富的数据类型 
-– Redis支持二进制安全的 Strings, Lists, Hashes, Sets 及 Ordered Sets 数据类型操作。
-原子 性
-– Redis的所有操作都是原子性的，意思就是要么成功执行要么失败完全不执行。单个操作是原子性的。多个操作也支持事务，即原子性，通过MULTI和EXEC指令包起来。
-丰富的特性 
-– Redis还支持 publish/subscribe通知订阅模式, key 过期等等特性。</code></pre><hr>
+</li>
+</ul>
+<h3 id="三、Redis为什么6-0之前不支持多线程"><a href="#三、Redis为什么6-0之前不支持多线程" class="headerlink" title="三、Redis为什么6.0之前不支持多线程"></a>三、Redis为什么6.0之前不支持多线程</h3><ol>
+<li>Redis的瓶颈不是CPU，受制于内存、网络</li>
+</ol>
+<ul>
+<li>存储于内存，快速读写网络开销大</li>
+</ul>
+<ol start="2">
+<li>提高Redis性能，Pipeline（命令批量）</li>
+</ol>
+<ul>
+<li>每秒100万个请求包装进Pipeline</li>
+</ul>
+<ol start="3">
+<li>单线程，内部维护成本相对较低，不需要管理多线程安全</li>
+</ol>
+<ul>
+<li>命令执行顺序不确定性，读写并发问题</li>
+</ul>
+<ol start="4">
+<li>惰性Rehash（渐进式）减少阻塞</li>
+</ol>
+<ul>
+<li>一般的公司，单线程Redis就够了。</li>
+</ul>
+<h3 id="四、Redis为什么6-0之后引入多线程"><a href="#四、Redis为什么6-0之后引入多线程" class="headerlink" title="四、Redis为什么6.0之后引入多线程"></a>四、Redis为什么6.0之后引入多线程</h3><ol>
+<li><p>小数据包。数据-》内存 响应时间 100ns 8w-10wQPS（极限）</p>
+</li>
+<li><p>针对大的公司，需要更大的QPS，IO的多线程（内部执行命令还是单线程）</p>
+</li>
+<li><p>为什么不采用分布式架构—很大的缺点。</p>
+</li>
+</ol>
+<ul>
+<li><p>服务器数量多，维护成本高。Redis命令不适用需要数据分区，无法解决热点数据读写的问题。</p>
+</li>
+<li><p>数据倾斜、重新分配、扩容、缩容，更加复杂。</p>
+</li>
+<li><p>本质：多线程任务 分摊到Redis 同步IO中，读写负载。</p>
+</li>
+</ul>
+<h3 id="五、Redis有哪些高级功能"><a href="#五、Redis有哪些高级功能" class="headerlink" title="五、Redis有哪些高级功能"></a>五、Redis有哪些高级功能</h3><ol>
+<li>慢查询</li>
+</ol>
+<ul>
+<li>快速定位系统中的慢操作，监测发生时间、耗时、命令的详细信息。</li>
+</ul>
+<ol start="2">
+<li><p>Pipeline</p>
+<img width="100" src="/medias/avatars/0f3eaa5c61d04181b266ed9636af4089.png">
+</li>
+<li><p>watch命令：</p>
+</li>
+</ol>
+<ul>
+<li>确保事务中的key有没有被其他客户端修改过，才执行事务，否则不执行（类似于乐观锁）。</li>
+</ul>
+<ol start="4">
+<li><p>Redis+Lua语言实现限流</p>
+<img width="100" src="/medias/avatars/3b6961cbe30f4e1780afb7096a87a971.png">
+</li>
+<li><p>分布式锁</p>
+</li>
+</ol>
+<ul>
+<li><p>首先需要Redis有互斥的能力，可以使用SETNX命令，（即如果key不存在，才会设置它的值，否则什么也不做。两个客户端进程可以执行这个命令，达到互斥，就可以实现一个分布式锁。</p>
+</li>
+<li><p>锁的过期时间不好计算</p>
+<img width="100" src="/medias/avatars/05f7178c27cb451aadcec27cc565ed3d.png">
+</li>
+<li><p>解决方案：分布式锁加入看门狗</p>
+<ul>
+<li>加锁时，先设置一个过期时间，然后开启<strong>“守护线程”</strong>，定时检测这个锁的失效时间，如果快要过期了，操作共享资源还未完成，则自动对锁进行续期，重新设置过期时间。</li>
+</ul>
+</li>
+</ul>
+<ol start="6">
+<li>高并发高可用</li>
+</ol>
+<ul>
+<li>主从复制:<ul>
+<li>提供了复制功能，实现了相同数据的多个Redis副本。每个主节点可以对应多个从节点，复制的数据流只能由主节点复制到从节点。<img width="100" src="/medias/avatars/065c62e317b64a29a9b0b9dc34111e1d.png">
+<img width="100" src="/medias/avatars/259f0fa00f4f4833a413835ff9c48dc6.png">
+</li>
+</ul>
+</li>
+</ul>
+<ol start="7">
+<li>哨兵：Redis Sentinel</li>
+</ol>
+<ul>
+<li>背景：主从复制模式下，主节点故障，需要人工将从节点晋升为主节点。</li>
+<li>2,8版本开始提供哨兵架构解决此问题。</li>
+<li>主从复制的问题<ul>
+<li>需要手动晋升子节点，同时需要修改应用方的节点地址。</li>
+<li>主节点的写能力收到单机限制</li>
+<li>主节点的存储能力收到单机的限制</li>
+</ul>
+</li>
+</ul>
+<h3 id="六、为什么需要使用Redis"><a href="#六、为什么需要使用Redis" class="headerlink" title="六、为什么需要使用Redis"></a>六、为什么需要使用Redis</h3><ol>
+<li>高性能</li>
+</ol>
+<ul>
+<li>Mysql（磁盘）毫秒级</li>
+<li>Redis（内存）微秒级</li>
+<li>更新策略：项目启动时全量同步：热点数据</li>
+</ul>
+<ol start="2">
+<li>高并发</li>
+</ol>
+<ul>
+<li>Mysql 并发量：1000/s</li>
+<li>Redis 并发量：100000/s</li>
+<li>集群架构<img width="100" src="/medias/avatars/1300d82659ce436788cd2a3d86d4448f.png">
+
+</li>
+</ul>
+<h3 id="七、Redis的事务"><a href="#七、Redis的事务" class="headerlink" title="七、Redis的事务"></a>七、Redis的事务</h3><ul>
+<li><p>本质：按照顺序串行化执行队列中的每个命令，其他客户端提交的命令请求不会插入到事务执行命令序列中。</p>
+</li>
+<li><p>顺序性、一次性、排他性执行一个队列中的一系列命令。</p>
+<ul>
+<li>命令    描述</li>
+<li>EXEC    执行所有事务块命令</li>
+<li>DISCARD    取消事务，放弃执行事务块所有命令</li>
+<li>MULTI    标记一个事务块，开启事务</li>
+<li>UNWATCH    取消WATCH命令对所有key的监视</li>
+<li>WATCH    监视key，如果在事务执行之前，该key被其他命令改动，那么事务将被打断<br>  //构建redis连接<br>  Jedis jedis = jedisPool.getResource();<br>  //标记一个事务块，开启事务<br>  Transaction transaction = jedis.multi();<br>  try {<pre><code>  transaction.set("name1","江先进");</code></pre>//            int n = 10/0;<pre><code>  transaction.set("name2","张硕");
+  //执行事务
+  transaction.exec();</code></pre>  }catch (Exception e){<pre><code>  //取消事务
+  transaction.discard();
+  e.printStackTrace();</code></pre>  }</li>
+</ul>
+</li>
+<li><p>回滚机制上，Redis只能对基本语法错误进行判断。运行时错误无法回滚。</p>
+</li>
+</ul>
+<h3 id="八、Redis的过期策略以及内存淘汰机制"><a href="#八、Redis的过期策略以及内存淘汰机制" class="headerlink" title="八、Redis的过期策略以及内存淘汰机制"></a>八、Redis的过期策略以及内存淘汰机制</h3><ol>
+<li>内存淘汰机制<ul>
+<li>定期删除（定时扫描策略）</li>
+<li>设置了过期时间的key放入独立字典，Redis默认会每秒进行十次过期扫描，不会遍历Key，而是采用简单的贪心策略。<ol>
+<li>从过期字典中随机20个key；</li>
+<li>删除其中已经过期的；</li>
+<li>如果过期比例超过1/4，则重复真个步骤；</li>
+</ol>
+</li>
+<li>一定要注意过期时间，如果大批量key过期（雪崩），需要给过期时间设置一个时间范围，不能全部同一时间过期<ul>
+<li>惰性删除</li>
+<li>客户端访问key的时候，redis对key的过期时间进行检查，如果过期就立即删除，不会返回任何东西。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>总结：定期删除是集中处理，惰性删除是零散处理。</li>
+</ul>
+<ol start="2">
+<li>过期策略<ul>
+<li>定时过期：每个设置过期时间的key都需要创建一个定时器，到期清除key。该策略会立即清除过期的数据，对内存友好，但是会占用大量CPU去处理过期数据，影响吞吐量</li>
+<li>惰性过期：只有访问一个key时，才会判断是否已过期，过期则清除。最大化节省CPU资源，对内存不友好。可能会导致大量过期的key因未被访问而无法清除。</li>
+<li>定期过期：每隔一定时间，扫描一定数量的key，并删除其中过期的，通过调整定时扫描的时间间隔和扫描限定耗时，使CPU和内存达到一个最佳平衡状态。</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>Redis中同时使用了惰性过期和定期过期两种策略。</li>
+<li>每隔100ms就随机抽取一定量key，检查和删除。同时获取key时，会检查一下是否过期，过期则删除。</li>
+<li>隐患：同样可能定期删除，漏删了大量过期key，也没有走惰性删除，就会导致大量过期key堆积在内存。</li>
+</ul>
+<ol start="3">
+<li>缓存淘汰算法</li>
+</ol>
+<ul>
+<li><p>Redis 缓存淘汰算法用于在内存资源不足时，决定哪些数据需要从缓存中移除。Redis 提供了多种策略以应对不同的应用场景：</p>
+<ol>
+<li>volatile-lru（LRU for volatile keys）：<ul>
+<li>当内存不足以容纳新写入的数据时，会优先剔除已设置过期时间的键值对，并根据LRU原则删除最近最少使用的数据。</li>
+</ul>
+</li>
+<li>allkeys-lru：<ul>
+<li>不区分是否设置了过期时间，所有键都会根据LRU规则淘汰，即删除最近最少使用的数据。</li>
+</ul>
+</li>
+<li>volatile-ttl：<ul>
+<li>同样针对设置了过期时间的键，但淘汰时不是基于访问频率而是基于键的剩余存活时间（TTL），选择TTL最短的键进行淘汰。</li>
+</ul>
+</li>
+<li>noeviction：<ul>
+<li>不进行任何数据淘汰，当内存满时，执行可能导致占用更多内存的命令将返回错误。</li>
+</ul>
+</li>
+<li>allkeys-random：<ul>
+<li>随机淘汰任意键，不论其是否被频繁使用或何时到期。</li>
+</ul>
+</li>
+<li>volatile-random：<ul>
+<li>淘汰一个随机的已设置过期时间的键。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>值得注意的是，Redis 实现的 LRU 算法并不是精确的 LRU，因为为了性能考虑，它并没有真正维护一个完整的 LRU 链表结构。Redis 采用了一种近似 LRU 的实现方法：通过为每个键维护一个 lru 字段来记录最后一次访问的时间戳，在内存不足时，Redis 会选择一定数量（比如 5 个）的候选键，然后比较这些候选键的 lru 值，选择其中最小的一个进行淘汰。这样可以降低维护 LRU 数据结构的成本，同时在大部分情况下能够达到类似 LRU 的效果。</p>
+</li>
+</ul>
+<h3 id="九、什么是缓存穿透？如何避免？"><a href="#九、什么是缓存穿透？如何避免？" class="headerlink" title="九、什么是缓存穿透？如何避免？"></a>九、什么是缓存穿透？如何避免？</h3><ul>
+<li>本质：数据库和Redis都不存在</li>
+<li>场景：查询id为-1的数据</li>
+<li>坏处：每次都需要查询数据库和redis，增加磁盘IO的压力</li>
+<li>解决方案：<ol>
+<li>参数校验、屏蔽非法参数</li>
+<li>数据库查询为空，可以给缓存一个空值或默认值，防止第二次再去数据库</li>
+<li>使用布隆过滤器快速判断数据是否存在，将所有可能存在的数据哈希存到一个足够大的容器中，不存在的数据被这个bitmap拦截掉</li>
+</ol>
+</li>
+<li>布隆过滤器的应用：<img width="100" src="/medias/avatars/5cc6a2b162424ca5944f5c4e90452c37.png">
+
+</li>
+</ul>
+<h3 id="十、什么是缓存雪崩？如何避免？"><a href="#十、什么是缓存雪崩？如何避免？" class="headerlink" title="十、什么是缓存雪崩？如何避免？"></a>十、什么是缓存雪崩？如何避免？</h3><ul>
+<li><p>本质：数据库和Redis都存在，但redis都过期了</p>
+</li>
+<li><p>同一时间，缓存大面积失效，大量请求都直接去访问数据库<br>原因：</p>
+<ol>
+<li>Redis失效、宕机（故障）<ul>
+<li>搭建Redis集群，主从架构</li>
+<li>RDB持久化、IOF持久化</li>
+<li>加入缓存组件：EHCache，搭建多级缓存（容易高并发的数据存入）</li>
+<li>加入限流组件：hystrix，超过一定流量后，增加请求限制（保护数据处理层）</li>
+</ul>
+</li>
+<li>Redis大量key的ttl过期<ul>
+<li>ttl（过期时间）岔开，增加随机值，避免同一时间全部失效。<img width="100" src="/medias/avatars/fe44ca85df454d55939e774acd2cadb2.png">
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>解决方案：</p>
+<ul>
+<li>热点数据永不过期，或者通过异步线程在每次热点数据快要过期时，进行续期</li>
+<li>数据的过期时间不要全一致，设为一定范围内的随机时间</li>
+<li>并发量不高，可加入队列或者锁，限制同一时间访问数据库的阈值</li>
+<li>分布式部署，将热点数据打散分不到多个节点</li>
+<li>如果是缓存中间件宕机了，需要尽可能保证其高可用性，可以搭建redis集群，提前做好报警机制</li>
+</ul>
+</li>
+</ul>
+<h3 id="十一、缓存击穿"><a href="#十一、缓存击穿" class="headerlink" title="十一、缓存击穿"></a>十一、缓存击穿</h3><ul>
+<li>本质：单个key没有或过期，同一时间查询这同一条数据并发量过多</li>
+<li>解决方案：<ol>
+<li>热点数据用不过期，或者通过异步线程在每次热点数据快要过期时，进行续期</li>
+<li>使用互斥锁，避免大量请求同时查询数据库</li>
+<li>熔断、降级、防止系统崩溃</li>
+<li>还可以考虑对重要的热点数据进行多级缓存</li>
+</ol>
+</li>
+</ul>
+<h3 id="十二、Redis如何设计分布式锁"><a href="#十二、Redis如何设计分布式锁" class="headerlink" title="十二、Redis如何设计分布式锁"></a>十二、Redis如何设计分布式锁</h3><ul>
+<li>概念：<ul>
+<li>锁：同一时间只允许一个线程或者一个应用程序进入执行</li>
+<li>分布式锁：必须要求Redis有【互斥】能力，可以使用SETNX命令：即key不存在了才会设置它的值，否则什么也不做。</li>
+</ul>
+</li>
+<li>注意事项：<ol>
+<li>如果过期时间是每个服务自己生成，需要保证每个客户端时间同步。</li>
+<li>必须保存持有者唯一标识，否则可能被别的客户端释放/解锁。</li>
+<li>给锁设置过期时间，以免进程挂了或异常了无法释放锁。</li>
+<li>加入看门狗：开启守护线程，定期检测锁的失效时间，如果快过期了，业务还没有执行完，则续期。</li>
+</ol>
+</li>
+<li>看门狗：开源框架Redisson，只要线程一个线程加锁成功，就会启动一个watch dog，每隔10秒检查一下锁是否释放，只要第一个线程还持有锁，就延长锁的失效时间，解决了锁过期但业务还没执行完的问题。</li>
+</ul>
+<h3 id="十三、什么是bigkey？会有什么影响？"><a href="#十三、什么是bigkey？会有什么影响？" class="headerlink" title="十三、什么是bigkey？会有什么影响？"></a>十三、什么是bigkey？会有什么影响？</h3><ol>
+<li>概念：</li>
+</ol>
+<ul>
+<li>key对应的value所占内存空间较大</li>
+<li>例如一个字符串类型的value最大存到512M，一个列表类型的value最大可以存储2的32次方-1个元素。</li>
+</ul>
+<ol start="2">
+<li>字符串类型：</li>
+</ol>
+<ul>
+<li>体现在单个value值特别大，一般认为超过10kb就是bigkey，和具体OPS相关（不同系统不同并发）。</li>
+</ul>
+<ol start="3">
+<li>非字符串类型：</li>
+</ol>
+<ul>
+<li>哈希、列表、集合、有序集合，体现在元素个数过多。</li>
+</ul>
+<ol start="4">
+<li><p>危害：</p>
+<ul>
+<li>内存空间不均匀</li>
+<li>超时堵塞：单线程操作bigkey比较耗时</li>
+<li>网络拥塞：每次获取bigkey产生的网络流量较大</li>
+<li>例如：一个bigkey为1MB，每秒访问为1000，则每秒产生1000MB的流量，普通千兆网（按照字节算是128MB/s）的服务器是灭顶之灾，而且服务器通常会采用单机多实例的方式来部署，可能会对其他实例造成影响。</li>
+</ul>
+</li>
+<li><p>解决方案：value拆分</p>
+</li>
+</ol>
+<h3 id="十四、Redis如何解决key冲突"><a href="#十四、Redis如何解决key冲突" class="headerlink" title="十四、Redis如何解决key冲突"></a>十四、Redis如何解决key冲突</h3><ol>
+<li>业务隔离</li>
+<li>key的设计</li>
+</ol>
+<ul>
+<li>业务模块+系统名称+关键（id），针对用户可以加入（userid）</li>
+</ul>
+<ol start="3">
+<li>分布式锁</li>
+</ol>
+<ul>
+<li>场景：多个客户端并发写key</li>
+<li>客户端拿到锁，才能进行操作，避免多个客户端竞争该key</li>
+</ul>
+<ol start="4">
+<li>时间戳</li>
+</ol>
+<ul>
+<li>key拼接时间戳，根据时间戳保证多个客户端的业务执行顺序</li>
+</ul>
+<h3 id="十五、怎么提高换成命中率"><a href="#十五、怎么提高换成命中率" class="headerlink" title="十五、怎么提高换成命中率"></a>十五、怎么提高换成命中率</h3><ol>
+<li>提前加载</li>
+<li>增加缓存的存储空间，增加缓存的数据</li>
+<li>调整缓存的存储类型</li>
+</ol>
+<ul>
+<li>例：对象通过Hash存储，而不用String。</li>
+<li>根据业务做适当调整。</li>
+</ul>
+<ol start="4">
+<li>调整缓存的存储类型<ul>
+<li>定时任务更新</li>
+<li>MySQL通过检测binlog，将消息推送到Redis，更新缓存</li>
+<li>通过Mq，业务更新修改数据时，通过MQ发送消息，消费更新缓存</li>
+</ul>
+</li>
+</ol>
+<h3 id="十六、Redis持久化方式有哪些方式？有什么区别？"><a href="#十六、Redis持久化方式有哪些方式？有什么区别？" class="headerlink" title="十六、Redis持久化方式有哪些方式？有什么区别？"></a>十六、Redis持久化方式有哪些方式？有什么区别？</h3><ol>
+<li>持久化</li>
+</ol>
+<ul>
+<li>将数据写入磁盘，避免因进程退出而造成的数据丢失，下次重启时通过持久化文件恢复数据。</li>
+</ul>
+<ol start="2">
+<li>RDB</li>
+</ol>
+<ul>
+<li>通过快照（内存中数据在某一时刻的状态记录）的方式实现持久化，根据快照的触发条件，将内存的数据快照写入磁盘，以二进制的压缩文件进行存储。</li>
+<li>缺点：每隔一段时间触发持久化，数据安全性低。</li>
+</ul>
+<ol start="3">
+<li>AOF</li>
+</ol>
+<ul>
+<li>以独立日志的方式记录每次写的命令，重启时重新执行AOF文件中的命令恢复数据</li>
+<li>AOF重写机制：AOF文件的大小达到某个阈值时，会将其中指令进行压缩。(如果有对于某个key多次的变更指令，则仅保留最新的数据指令)。</li>
+<li>优化：<ul>
+<li>因为AOF重写过程中需要读取当前内存中所有键值数据，性能较低，redis将其放在一个后台子线程中完成。</li>
+<li>为了避免重写过程中出现数据变动，主进程的数据变更需要追加到AOF重写缓冲区中，等到AOF重写完成后，再把AOF重写换乘区里面的内容追加到新的AOF文件中。</li>
+</ul>
+</li>
+<li>缺点：AOF文件可能过大，性能较差</li>
+</ul>
+<ol start="4">
+<li>混合式</li>
+</ol>
+<ul>
+<li>如果执行bgrewriteaof命令，将内存中已有的数据以二进制格式存放在AOF文件中（模拟RDB），后续命令亦然采用AOF追加方式。</li>
+<li>生产环境中一般采用两种持久化机制混合使用。</li>
+<li>将内存中数据快照存储在AOF文件中（模拟RDB），后续再以AOF追加方式。</li>
+<li>如果仅作为缓存使用，可以承受几分钟数据丢失，可以使用RDB，对主程序性能影响最小。<img width="100" src="/medias/avatars/d4ae5638b33c4a00ba7dc215d62d9f6a.png">
+
+</li>
+</ul>
+<h3 id="十七、为什么Redis需要把所有数据放到内存中？"><a href="#十七、为什么Redis需要把所有数据放到内存中？" class="headerlink" title="十七、为什么Redis需要把所有数据放到内存中？"></a>十七、为什么Redis需要把所有数据放到内存中？</h3><ol>
+<li><p>内存访问与磁盘访问的差距：</p>
+<img width="100" src="/medias/avatars/fa449af16b4d41b0898eaa3e68b85f11.png">
+
+<ul>
+<li>几乎是10倍以上，如果不是顺序读取而是随机读取效率会相差更大</li>
+<li>同时还有CPU上下文切换的开销</li>
+</ul>
+</li>
+<li><p>Redis通过异步，持久化将数据写入磁盘</p>
+</li>
+<li><p>随着技术的发展，硬件上来说内存也越来越便宜了</p>
+</li>
+<li><p>默认情况下，哪怕Redis内存不够了，也不会发生宕机，而是只可读不能写（Noeviction策略）</p>
+</li>
+<li><p>通过内存淘汰策略，确保整体服务正常运行</p>
+</li>
+</ol>
+<hr>
+<p><strong>简单使用方法：</strong></p>
+<ol>
+<li><code>star</code> 本项目</li>
+<li>安装<a href="https://git-scm.com/downloads" target="_blank" rel="noopener">Git</a>, 安装<a href="https://nodejs.org/en/" target="_blank" rel="noopener">nodeJS</a></li>
+<li>你可以直接<code>fork</code>一份源码到你的仓库，<code>clone</code>到本地</li>
+<li>在本地博客仓库运行<code>npm i</code>命令安装依赖包</li>
+<li>修改配置信息，改成自己的信息</li>
+<li>运行命令<code>hexo  clean</code>（清除生成文件），<code>hexo g</code>（生成网页）， <code>hexo  s</code>（本地预览），<code>hexo d</code>（部署）</li>
+</ol>
 <blockquote>
 <p><strong>最后，如果项目和教程对你有所帮助或者你看见了还算比较喜欢，欢迎给我<code>star</code>，谢谢您！</strong></p>
 </blockquote>
@@ -890,7 +1371,8 @@ SREM key member1 member2    移除集合中一个或多个成员</code></pre><h1
 
 <table>
   <tbody><tr>
-    <td><img width="100" src="https://sunhwee.com/medias/reward/alipay.bmp"></td>    <td><img width="100" src="https://sunhwee.com/medias/reward/wechat.bmp"></td>    <td><img width="100" src="https://sunhwee.com/medias/reward/zan.png"></td>   
+    <td><img width="100" src="https://sunhwee.com/medias/reward/alipay.bmp"></td>  
+      <td><img width="100" src="https://sunhwee.com/medias/reward/wechat.bmp"></td>    <td><img width="100" src="https://sunhwee.com/medias/reward/zan.png"></td>   
   </tr>
 </tbody></table>
 <script>
@@ -1061,7 +1543,7 @@ SREM key member1 member2    移除集合中一个或多个成员</code></pre><h1
                     </span>
                     <a href="https://github.com/pantao-1/pantao-1.github.io.git" class="b-link-green">创意驿站</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2024/03/15/redis/" class="b-link-green">redis</a>
+                    <a href="/2024/01/22/redis-mian-shi-ti/" class="b-link-green">Redis面试题</a>
                 </p>
             </div>
 
@@ -1084,7 +1566,7 @@ SREM key member1 member2    移除集合中一个或多个成员</code></pre><h1
         repo: 'shw2018.github.io',
         owner: 'shw2018',
         admin: ["shw2018"],
-        id: '2024/03/15/redis/',
+        id: '2024/01/22/redis-mian-shi-ti/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1403,52 +1885,50 @@ SREM key member1 member2    移除集合中一个或多个成员</code></pre><h1
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2024/03/15/redis/">
+                <a href="/2024/01/22/echarts/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="redis">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="ECharts">
                         
-                        <span class="card-title">redis</span>
+                        <span class="card-title">ECharts</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            整合了一些redis的笔记
+                            提供了丰富的图表类型和交互能力，使用户能够通过简单的配置生成各种各样的图表，包括但不限于折线图、柱状图、散点图、饼图、雷达图、地图等。ECharts 遵循 Apache-2.0 开源协议，免费商用。
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2024-03-15
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2024-01-22
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/redis/" class="post-category" target="_blank">
-                                    redis
+                            <a href="/categories/ECharts/" class="post-category" target="_blank">
+                                    ECharts
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/笔记/" target="_blank">
-                        <span class="chip bg-color">笔记</span>
+                    <a href="/tags/ECharts/" target="_blank">
+                        <span class="chip bg-color">ECharts</span>
                     </a>
                     
-                    <a href="/tags/redis/" target="_blank">
-                        <span class="chip bg-color">redis</span>
+                    <a href="/tags/JavaScript/" target="_blank">
+                        <span class="chip bg-color">JavaScript</span>
                     </a>
                     
                 </div>
@@ -1462,31 +1942,31 @@ SREM key member1 member2    移除集合中一个或多个成员</code></pre><h1
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/02/23/spingboot/">
+                <a href="/2024/01/22/nvm/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="SpingBoot">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Nvm工具">
                         
-                        <span class="card-title">SpingBoot</span>
+                        <span class="card-title">Nvm工具</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            学习spingBoot
+                            提供了控制node版本
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2024-02-23
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2024-01-22
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/SpingBoot/" class="post-category" target="_blank">
-                                    SpingBoot
+                            <a href="/categories/Nvm/" class="post-category" target="_blank">
+                                    Nvm
                                 </a>
                             
                             
@@ -1496,12 +1976,12 @@ SREM key member1 member2    移除集合中一个或多个成员</code></pre><h1
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/SpingBoot/" target="_blank">
-                        <span class="chip bg-color">SpingBoot</span>
+                    <a href="/tags/node/" target="_blank">
+                        <span class="chip bg-color">node</span>
                     </a>
                     
-                    <a href="/tags/jsp/" target="_blank">
-                        <span class="chip bg-color">jsp</span>
+                    <a href="/tags/Nvm/" target="_blank">
+                        <span class="chip bg-color">Nvm</span>
                     </a>
                     
                 </div>
