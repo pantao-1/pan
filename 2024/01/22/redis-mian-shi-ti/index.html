@@ -782,14 +782,14 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        5.9k
+                        8.4k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        20 分
+                        29 分
                     </div>
                     
                 
@@ -1354,6 +1354,232 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
 <li><p>通过内存淘汰策略，确保整体服务正常运行</p>
 </li>
 </ol>
+<h3 id="十八、如何保证缓存与数据库双写一致性？"><a href="#十八、如何保证缓存与数据库双写一致性？" class="headerlink" title="十八、如何保证缓存与数据库双写一致性？"></a>十八、如何保证缓存与数据库双写一致性？</h3><ol>
+<li>新增数据类</li>
+</ol>
+<ul>
+<li>新增数据时，数据会直接写入数据库，不用对缓存做任何操作；此时缓存没有新增数据，而数据库中最新值。</li>
+</ul>
+<ol start="2">
+<li>更新缓存类</li>
+</ol>
+<ul>
+<li>（1）先更新缓存，在更新DB（一般不考虑）</li>
+<li>原因：缓存更新成功，更新数据库时出现异常，会导致数据源与缓存数据完全不一致，而且很难察觉，因为缓存中的数据一直都存在。</li>
+<li>（2）先更新DB，在更新缓存（一般不考虑）</li>
+<li>原因：数据库更新成功了，缓存更新失败了，同样会导致数据源与缓存数据完全不一致，也很难察觉。</li>
+</ul>
+<ol start="3">
+<li>删除缓存</li>
+</ol>
+<ul>
+<li>（3）先删除缓存，后更新DB</li>
+<li>问题：</li>
+<li>两个请求：A（更新）和B（查询）</li>
+<li>A -&gt; 删除缓存中的数据 -&gt; 更新数据库</li>
+<li>B -&gt; 查询缓存为空 -&gt; 查询数据库 -&gt; 补录到缓存</li>
+<li>A -&gt; 还未更新成功/事务还未提交，B -&gt; 查询到的其实是数据库旧值</li>
+<li>A -&gt; 还未更新成功/事务还未提交，B -&gt; 查询到的其实是数据库旧值</li>
+<li>解决方案：</li>
+<li>先淘汰缓存</li>
+<li>再写数据库</li>
+<li>休眠1秒，再次淘汰缓存</li>
+<li>这个休眠的时间需要评估项目的读数据业务逻辑的耗时，确保请求结束时，写请求可以删除读请求造成的缓存脏数据。</li>
+<li>（4）先更新DB，后删除缓存</li>
+<li>查询：先读缓存 -&gt; 缓存没有就读数据库 -&gt; 取出数据放入缓存 -&gt; 同时返回响应。</li>
+<li>更新：先更新数据库 -&gt; 删除缓存</li>
+</ul>
+<ol start="4">
+<li>如何选择</li>
+</ol>
+<ul>
+<li><p>一般线上更多偏向于删除缓存类操作（容易避免问题）</p>
+</li>
+<li><p>原因：</p>
+<ul>
+<li>删除缓存比在DB中要快，所以一般先更新DB，后删除缓存</li>
+<li>问题只会出现在查询比删除慢的情况，出现率相对最少</li>
+<li>同时延迟双删可以有效避免缓存不一致情况。<img width="100" src="/medias/avatars/7190a8f437a1490eb13f3892b448d796.png">
+</li>
+</ul>
+</li>
+<li><p>伪代码实现延迟双删：<br> redis.deykey(X)<br> db.update(X)<br> Thread.sleep(N)<br> redis.delKey(X)</p>
+</li>
+</ul>
+<ol start="5">
+<li>读取binlog日志</li>
+</ol>
+<ul>
+<li>异步删除、更新缓存，<ul>
+<li>可以使用canal将binlog日志采集发送到MQ队列中。</li>
+<li>通过ACK机制确认处理这条更新消息，删除缓存，保证数据一致性。<h3 id="十九、Redis集群方案"><a href="#十九、Redis集群方案" class="headerlink" title="十九、Redis集群方案"></a>十九、Redis集群方案</h3></li>
+</ul>
+</li>
+<li>分布式解决方案 ：Redis Cluster</li>
+<li>3.0版本推出</li>
+<li>场景：单机内存、并发、流量等瓶颈</li>
+<li>方案：</li>
+<li>（1）客户端分区：</li>
+<li>优点：分区逻辑可控</li>
+<li>缺点：需要处理数据路由、高可用、故障转移等问题</li>
+<li>（2）代理方案：</li>
+<li>优点：简化客户端分布式逻辑，升级维护便利</li>
+<li>缺点：加重架构部署复杂度和性能损耗</li>
+</ul>
+<ol start="2">
+<li>虚拟槽分区（0~16383）<img width="100" src="/medias/avatars/4a17080d64d1485f9f793488948b07e8.png">
+</li>
+</ol>
+<ul>
+<li>主节点数量基本不可能超过1000个，节点连接需要不断发送ping/pong命令，消耗网络带宽</li>
+</ul>
+<ol start="3">
+<li>集群功能限制</li>
+</ol>
+<ul>
+<li>（1）key批量操作支持有限：mset、mget仅支持相同slot值的key。</li>
+<li>（2）key事务操作支持有限：仅支持在同一节点上的事务操作。</li>
+<li>（3）key作为数据分区的最小颗粒度，不允许大的键值对（hash、list）映射在不同节点。</li>
+<li>（4）不支持多数据库空间。单机为0-15（16个），集群模式仅能使用db0。</li>
+<li>（5）复制结构仅支持一层，节点只能复制到主节点，不支持嵌套树状复制结构。</li>
+</ul>
+<ol start="4">
+<li>搭建集群</li>
+</ol>
+<ul>
+<li>方式:</li>
+<li>（1）Redis协议手工搭建。</li>
+<li>（2）5.0之前有ruby语言脚本搭建。</li>
+<li>（3）5.0之后搭建功能合并至redis-cli。</li>
+<li>节点数至少奇数点个，官方推荐三主三从。</li>
+</ul>
+<h3 id="二十、Redis集群方案什么情况下会导致整个集群不可用？"><a href="#二十、Redis集群方案什么情况下会导致整个集群不可用？" class="headerlink" title="二十、Redis集群方案什么情况下会导致整个集群不可用？"></a>二十、Redis集群方案什么情况下会导致整个集群不可用？</h3><ul>
+<li>A、B、C三个节点集群，B节点失败（主故障，且没有替代方案）整个集群都是不可用的。</li>
+<li>集群不可用判定：</li>
+<li>保护措施：默认情况下当16384个槽点任何一个没有指派到节点时，整个集群不可用。</li>
+<li>主节点下线-&gt;故障发现-&gt;自动完成转移期间，整个集群为不可用状态。</li>
+<li>可用通过设置cluster-require-full-coverage配置为no：主节点故障时，不影响其他主节点的可用性。</li>
+</ul>
+<h3 id="二十一、Redis集群会有写操作丢失吗？为什么？"><a href="#二十一、Redis集群会有写操作丢失吗？为什么？" class="headerlink" title="二十一、Redis集群会有写操作丢失吗？为什么？"></a>二十一、Redis集群会有写操作丢失吗？为什么？</h3><ul>
+<li>Redis无法保证数据的强一致性</li>
+<li>一般只能向主节点写入数据，再异步同步到子节点</li>
+<li>此时如果响应给客户端后还未异步同步成功时，主节点宕机了，子节点升至主节点，此时就会出现写入操作丢失。</li>
+</ul>
+<h3 id="二十二、Redis常见性能问题和解决方案"><a href="#二十二、Redis常见性能问题和解决方案" class="headerlink" title="二十二、Redis常见性能问题和解决方案"></a>二十二、Redis常见性能问题和解决方案</h3><ol>
+<li>持久化 性能问题</li>
+</ol>
+<ul>
+<li>早期仅支持全量复制-&gt;部分复制（一台机器性能开销过大）</li>
+<li>因此开始配置主从 ：主节点不再做持久化而是交给从节点来做</li>
+</ul>
+<ol start="2">
+<li>数据比较重要，开启AOF。策略最好配置每秒同步。</li>
+<li>主从复制 流畅，建议同一个局域网内操作，负责网络开销过大</li>
+<li>尽量避免主库压力过大，增加从库</li>
+<li>主从复制 尽量不要使用网状结构、线性结构</li>
+</ol>
+<h3 id="二十三、热点数据和冷数据"><a href="#二十三、热点数据和冷数据" class="headerlink" title="二十三、热点数据和冷数据"></a>二十三、热点数据和冷数据</h3><ol>
+<li>热数据</li>
+</ol>
+<ul>
+<li>访问频次较高，考虑使用缓存Redis</li>
+<li>地图信息</li>
+<li>点赞数、收藏数、分享数（不断变化）同步Redis</li>
+<li>数据更新之前至少读取2次才能放缓存</li>
+</ul>
+<ol start="2">
+<li>冷数据</li>
+</ol>
+<ul>
+<li>访问频次少</li>
+<li>不需要放缓存</li>
+</ul>
+<h3 id="二十四、什么情况下可能会导致Redis阻塞"><a href="#二十四、什么情况下可能会导致Redis阻塞" class="headerlink" title="二十四、什么情况下可能会导致Redis阻塞"></a>二十四、什么情况下可能会导致Redis阻塞</h3><ol>
+<li>客户端阻塞</li>
+</ol>
+<ul>
+<li>命令执行时间过长： keys* Hgetall smembers 时间复杂度O(N)</li>
+</ul>
+<ol start="2">
+<li>BIGkey删除</li>
+</ol>
+<ul>
+<li>需要释放大量占用内存 zset（100万的元素 删除大概需要2s）</li>
+</ul>
+<ol start="3">
+<li>清空库</li>
+</ol>
+<ul>
+<li>flushdb flushall 涉及删除所有键值对</li>
+</ul>
+<ol start="4">
+<li>AOF日志同步写，记录AOF日志</li>
+</ol>
+<ul>
+<li>大量写的操作</li>
+<li>一个同步写磁盘操作大概耗时1~2ms</li>
+</ul>
+<ol start="5">
+<li>从库 加载RDB文件</li>
+</ol>
+<ul>
+<li>RDB文件过大</li>
+</ul>
+<ol start="6">
+<li>Redis尽量部署在独立的服务器中</li>
+</ol>
+<ul>
+<li>二十五、线上Redis响应慢处理思路<ol>
+<li>紧急处理方案，扩容</li>
+<li>生产环境查看Redis内存使用率，分析一定时间段内key数量变化</li>
+</ol>
+<ul>
+<li>分析是否是大量数据未设置过期时间，或者是因为新版本迭代引起</li>
+</ul>
+<ol start="3">
+<li>清除bigkey，优化生成bigkey的代码块，调整未设置过期时间的代码块</li>
+<li>根据业务场景调整淘汰策略</li>
+</ol>
+</li>
+</ul>
+<h3 id="二十六、-Redis-高可用"><a href="#二十六、-Redis-高可用" class="headerlink" title="二十六、 Redis 高可用"></a>二十六、 Redis 高可用</h3><ul>
+<li>高可用：数据不能丢失（尽量减少丢失），保证Redis</li>
+<li>26.1 主从模式</li>
+<li>部署多台Redis服务器，主从复制以保证数据副本一致。主库通过将RDB文件发送给从库实现复制。</li>
+<li>主从之间采用读写分离，主库写操作，从库仅负责读操作。</li>
+<li>主库如果宕机了，人工切换一台从库称为主库，通知应用方更新主节点地址。</li>
+<li>问题：数据不一致。</li>
+<li>原因：主从库网络延迟，从库接收到命令，但它正在执行阻塞性命令。</li>
+<li>解决方法：保证网络通畅，监控主从库复制进度。</li>
+<li>26.2 哨兵模式</li>
+<li>Redis从2.8开始提供哨兵机制。</li>
+<li>####26.2.1 作用</li>
+<li>监控：周期性ping主从库，检测是否挂了，标记下线状态。</li>
+<li>自动选主切换：多个从库中按照一定规则选一个作为主库。</li>
+<li>通知：选出主库后，将新主库的连接信息发送给其他从库以及应用方，重新建立联系。</li>
+<li>26.2.2 哨兵</li>
+<li>由一个或多个哨兵实例组成哨兵系统，监控其他Redis节点的同时，哨兵实例之间也互相监控。</li>
+<li>哨兵之间通过发布订阅机制组成集群。一主多从</li>
+<li>缺点：无法实现在线扩容，并发压力受限于单个服务器的资源配置。</li>
+<li>26.3 Redis Cluster</li>
+<li>哨兵模式解决了自动切换主从的问题，但是没有解决在线扩容的问题。</li>
+<li>本质：Redis Cluster实现了Redis的分布式存储，每个节点存储不同的数据，实现数据分片。</li>
+<li>引入Slot槽实现数据分片，每个节点分配一个Slot区间，当我们存取Key的时候，Redis根据key计算得到Slot值，找到对应的节点进行读写。多主多从。</li>
+</ul>
+<h3 id="二十七、布隆过滤器"><a href="#二十七、布隆过滤器" class="headerlink" title="二十七、布隆过滤器"></a>二十七、布隆过滤器</h3><ul>
+<li>布隆过滤器可以应对缓存穿透问题</li>
+<li>数据结构：一个很长的二进制向量和一组Hash映射函数组成。</li>
+<li>作用：检索一个元素是否在一个集合中，空间查询效率比一般的算法要好的多。</li>
+<li>缺点：有一定误识别率和删除困难。</li>
+<li>原理：集合A中有n个元素，利用K个哈希散列函数，将A中每个元素映射到一个长度为a位的数组B中不同位置上。这些位置上的二进制数均设置为1。经过这个K个哈希散列函数映射后，发现其k个位置上的二进制数全部为1，这个元素很可能属于集合A。</li>
+</ul>
+<h3 id="二十八、Redis的理解"><a href="#二十八、Redis的理解" class="headerlink" title="二十八、Redis的理解"></a>二十八、Redis的理解</h3><ul>
+<li>本质：基于Key-Value存储结构的非关系型数据库</li>
+<li>数据类型：提供5种基本数据类型，String、set、zset、list、Map。</li>
+<li>性能：基于内存存储，并且在数据结构上做了大量优化，IO性能较好。</li>
+<li>作用：作为应用与数据库之间的分布式缓存组件。</li>
+<li>高可用：提供了主从复制、哨兵、以及集群方式实现高可用，集群中通过hash槽的方式实现了数据分片，进一步提升了性能</li>
+</ul>
 <hr>
 <p><strong>简单使用方法：</strong></p>
 <ol>
@@ -1889,19 +2115,19 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2024/01/22/echarts/">
+                <a href="/2024/01/22/springboot/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="ECharts">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="SpringBoot面试题">
                         
-                        <span class="card-title">ECharts</span>
+                        <span class="card-title">SpringBoot面试题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            提供了丰富的图表类型和交互能力，使用户能够通过简单的配置生成各种各样的图表，包括但不限于折线图、柱状图、散点图、饼图、雷达图、地图等。ECharts 遵循 Apache-2.0 开源协议，免费商用。
+                            SpringBoot面试题
                         
                     </div>
                     <div class="publish-info">
@@ -1912,8 +2138,8 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/ECharts/" class="post-category" target="_blank">
-                                    ECharts
+                            <a href="/categories/SpringBoot/" class="post-category" target="_blank">
+                                    SpringBoot
                                 </a>
                             
                             
@@ -1923,12 +2149,8 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/ECharts/" target="_blank">
-                        <span class="chip bg-color">ECharts</span>
-                    </a>
-                    
-                    <a href="/tags/JavaScript/" target="_blank">
-                        <span class="chip bg-color">JavaScript</span>
+                    <a href="/tags/SpringBoot/" target="_blank">
+                        <span class="chip bg-color">SpringBoot</span>
                     </a>
                     
                 </div>
@@ -1942,19 +2164,19 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/22/nvm/">
+                <a href="/2024/01/22/springcloud/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Nvm工具">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="SpringCloud">
                         
-                        <span class="card-title">Nvm工具</span>
+                        <span class="card-title">SpringCloud</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            提供了控制node版本
+                            学习SpringCloud
                         
                     </div>
                     <div class="publish-info">
@@ -1965,8 +2187,8 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Nvm/" class="post-category" target="_blank">
-                                    Nvm
+                            <a href="/categories/SpringCloud/" class="post-category" target="_blank">
+                                    SpringCloud
                                 </a>
                             
                             
@@ -1976,12 +2198,8 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/node/" target="_blank">
-                        <span class="chip bg-color">node</span>
-                    </a>
-                    
-                    <a href="/tags/Nvm/" target="_blank">
-                        <span class="chip bg-color">Nvm</span>
+                    <a href="/tags/SpringCloud/" target="_blank">
+                        <span class="chip bg-color">SpringCloud</span>
                     </a>
                     
                 </div>
@@ -2156,7 +2374,7 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">35.3k</span> 字
+                <span class="white-color">46.2k</span> 字
             
 
             
@@ -2391,5 +2609,5 @@ $(function () {
             </script>
         
 
-    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":200},"mobile":{"show":false},"react":{"opacity":0.7}});</script><script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
+    <script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":200},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
 </html>
