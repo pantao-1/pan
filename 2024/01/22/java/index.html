@@ -859,7 +859,7 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
 <li>业务中需要用到时间戳时，一般会使用System.currentTimeMillis()或者New Date()等方式获取系统的毫秒时间戳，每一次获取都是一次系统调用（需要调用操作系统中对应的函数，涉及上下文切换），相对比较耗时。</li>
 <li>作为单线程的Redis承受不起，因此它由一个定时任务，每毫秒更新一次缓存，获取时间都是从缓存中直接拿。</li>
 </ul>
-<h3 id="二、Redis合适的应用场景"><a href="#二、Redis合适的应用场景" class="headerlink" title="二、Redis合适的应用场景"></a>二、Redis合适的应用场景</h3><ol>
+<h1 id="二、Redis合适的应用场景"><a href="#二、Redis合适的应用场景" class="headerlink" title="二、Redis合适的应用场景"></a>二、Redis合适的应用场景</h1><ol>
 <li><p>常用基本数据类型（5种）<br> 名称    英文名    作用域<br> 字符串    String    缓存、计数器、分布式Session<br> 哈希    Hash    存放对象<br> 列表    list    消息队列、文章列表<br> 集合    set    标签、随机数、社交图谱<br> 有序集合    ZSET    排行榜<br> Bitmaps    Bitmaps    布隆过滤器<br> HyperLogLog    HyperLogLog    UV<br> Geo    Geo    Redis3.2推出的，地理位置定位，用于存储地理位置信息，并对存储的信息进行操作</p>
 </li>
 <li><p>字符串（String）</p>
@@ -937,7 +937,7 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
 </ul>
 </li>
 </ol>
-<h3 id="Redis高级数据结构"><a href="#Redis高级数据结构" class="headerlink" title="Redis高级数据结构"></a>Redis高级数据结构</h3><ol start="6">
+<h1 id="Redis高级数据结构"><a href="#Redis高级数据结构" class="headerlink" title="Redis高级数据结构"></a>Redis高级数据结构</h1><ol start="6">
 <li>Bitmaps</li>
 </ol>
 <ul>
@@ -959,7 +959,7 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
 
 </li>
 </ul>
-<h3 id="三、Redis为什么6-0之前不支持多线程"><a href="#三、Redis为什么6-0之前不支持多线程" class="headerlink" title="三、Redis为什么6.0之前不支持多线程"></a>三、Redis为什么6.0之前不支持多线程</h3><ol>
+<h1 id="三、Redis为什么6-0之前不支持多线程"><a href="#三、Redis为什么6-0之前不支持多线程" class="headerlink" title="三、Redis为什么6.0之前不支持多线程"></a>三、Redis为什么6.0之前不支持多线程</h1><ol>
 <li>Redis的瓶颈不是CPU，受制于内存、网络</li>
 </ol>
 <ul>
@@ -983,7 +983,7 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
 <ul>
 <li>一般的公司，单线程Redis就够了。</li>
 </ul>
-<h3 id="四、Redis为什么6-0之后引入多线程"><a href="#四、Redis为什么6-0之后引入多线程" class="headerlink" title="四、Redis为什么6.0之后引入多线程"></a>四、Redis为什么6.0之后引入多线程</h3><ol>
+<h1 id="四、Redis为什么6-0之后引入多线程"><a href="#四、Redis为什么6-0之后引入多线程" class="headerlink" title="四、Redis为什么6.0之后引入多线程"></a>四、Redis为什么6.0之后引入多线程</h1><ol>
 <li><p>小数据包。数据-》内存 响应时间 100ns 8w-10wQPS（极限）</p>
 </li>
 <li><p>针对大的公司，需要更大的QPS，IO的多线程（内部执行命令还是单线程）</p>
@@ -999,7 +999,7 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
 <li><p>本质：多线程任务 分摊到Redis 同步IO中，读写负载。</p>
 </li>
 </ul>
-<h3 id="五、Redis有哪些高级功能"><a href="#五、Redis有哪些高级功能" class="headerlink" title="五、Redis有哪些高级功能"></a>五、Redis有哪些高级功能</h3><ol>
+<h1 id="五、Redis有哪些高级功能"><a href="#五、Redis有哪些高级功能" class="headerlink" title="五、Redis有哪些高级功能"></a>五、Redis有哪些高级功能</h1><ol>
 <li>慢查询</li>
 </ol>
 <ul>
@@ -1058,7 +1058,7 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
 </ul>
 </li>
 </ul>
-<h3 id="六、为什么需要使用Redis"><a href="#六、为什么需要使用Redis" class="headerlink" title="六、为什么需要使用Redis"></a>六、为什么需要使用Redis</h3><ol>
+<h1 id="六、为什么需要使用Redis"><a href="#六、为什么需要使用Redis" class="headerlink" title="六、为什么需要使用Redis"></a>六、为什么需要使用Redis</h1><ol>
 <li>高性能</li>
 </ol>
 <ul>
@@ -1076,7 +1076,7 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
 
 </li>
 </ul>
-<h3 id="七、Redis的事务"><a href="#七、Redis的事务" class="headerlink" title="七、Redis的事务"></a>七、Redis的事务</h3><ul>
+<h1 id="七、Redis的事务"><a href="#七、Redis的事务" class="headerlink" title="七、Redis的事务"></a>七、Redis的事务</h1><ul>
 <li><p>本质：按照顺序串行化执行队列中的每个命令，其他客户端提交的命令请求不会插入到事务执行命令序列中。</p>
 </li>
 <li><p>顺序性、一次性、排他性执行一个队列中的一系列命令。</p>
@@ -1096,7 +1096,7 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
 <li><p>回滚机制上，Redis只能对基本语法错误进行判断。运行时错误无法回滚。</p>
 </li>
 </ul>
-<h3 id="八、Redis的过期策略以及内存淘汰机制"><a href="#八、Redis的过期策略以及内存淘汰机制" class="headerlink" title="八、Redis的过期策略以及内存淘汰机制"></a>八、Redis的过期策略以及内存淘汰机制</h3><ol>
+<h1 id="八、Redis的过期策略以及内存淘汰机制"><a href="#八、Redis的过期策略以及内存淘汰机制" class="headerlink" title="八、Redis的过期策略以及内存淘汰机制"></a>八、Redis的过期策略以及内存淘汰机制</h1><ol>
 <li>内存淘汰机制<ul>
 <li>定期删除（定时扫描策略）</li>
 <li>设置了过期时间的key放入独立字典，Redis默认会每秒进行十次过期扫描，不会遍历Key，而是采用简单的贪心策略。<ol>
@@ -1164,7 +1164,7 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
 <li><p>值得注意的是，Redis 实现的 LRU 算法并不是精确的 LRU，因为为了性能考虑，它并没有真正维护一个完整的 LRU 链表结构。Redis 采用了一种近似 LRU 的实现方法：通过为每个键维护一个 lru 字段来记录最后一次访问的时间戳，在内存不足时，Redis 会选择一定数量（比如 5 个）的候选键，然后比较这些候选键的 lru 值，选择其中最小的一个进行淘汰。这样可以降低维护 LRU 数据结构的成本，同时在大部分情况下能够达到类似 LRU 的效果。</p>
 </li>
 </ul>
-<h3 id="九、什么是缓存穿透？如何避免？"><a href="#九、什么是缓存穿透？如何避免？" class="headerlink" title="九、什么是缓存穿透？如何避免？"></a>九、什么是缓存穿透？如何避免？</h3><ul>
+<h1 id="九、什么是缓存穿透？如何避免？"><a href="#九、什么是缓存穿透？如何避免？" class="headerlink" title="九、什么是缓存穿透？如何避免？"></a>九、什么是缓存穿透？如何避免？</h1><ul>
 <li>本质：数据库和Redis都不存在</li>
 <li>场景：查询id为-1的数据</li>
 <li>坏处：每次都需要查询数据库和redis，增加磁盘IO的压力</li>
@@ -1178,7 +1178,7 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
 
 </li>
 </ul>
-<h3 id="十、什么是缓存雪崩？如何避免？"><a href="#十、什么是缓存雪崩？如何避免？" class="headerlink" title="十、什么是缓存雪崩？如何避免？"></a>十、什么是缓存雪崩？如何避免？</h3><ul>
+<h1 id="十、什么是缓存雪崩？如何避免？"><a href="#十、什么是缓存雪崩？如何避免？" class="headerlink" title="十、什么是缓存雪崩？如何避免？"></a>十、什么是缓存雪崩？如何避免？</h1><ul>
 <li><p>本质：数据库和Redis都存在，但redis都过期了</p>
 </li>
 <li><p>同一时间，缓存大面积失效，大量请求都直接去访问数据库<br>原因：</p>
@@ -1207,7 +1207,7 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
 </ul>
 </li>
 </ul>
-<h3 id="十一、缓存击穿"><a href="#十一、缓存击穿" class="headerlink" title="十一、缓存击穿"></a>十一、缓存击穿</h3><ul>
+<h1 id="十一、缓存击穿"><a href="#十一、缓存击穿" class="headerlink" title="十一、缓存击穿"></a>十一、缓存击穿</h1><ul>
 <li>本质：单个key没有或过期，同一时间查询这同一条数据并发量过多</li>
 <li>解决方案：<ol>
 <li>热点数据用不过期，或者通过异步线程在每次热点数据快要过期时，进行续期</li>
@@ -1217,7 +1217,7 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
 </ol>
 </li>
 </ul>
-<h3 id="十二、Redis如何设计分布式锁"><a href="#十二、Redis如何设计分布式锁" class="headerlink" title="十二、Redis如何设计分布式锁"></a>十二、Redis如何设计分布式锁</h3><ul>
+<h1 id="十二、Redis如何设计分布式锁"><a href="#十二、Redis如何设计分布式锁" class="headerlink" title="十二、Redis如何设计分布式锁"></a>十二、Redis如何设计分布式锁</h1><ul>
 <li>概念：<ul>
 <li>锁：同一时间只允许一个线程或者一个应用程序进入执行</li>
 <li>分布式锁：必须要求Redis有【互斥】能力，可以使用SETNX命令：即key不存在了才会设置它的值，否则什么也不做。</li>
@@ -1232,7 +1232,7 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
 </li>
 <li>看门狗：开源框架Redisson，只要线程一个线程加锁成功，就会启动一个watch dog，每隔10秒检查一下锁是否释放，只要第一个线程还持有锁，就延长锁的失效时间，解决了锁过期但业务还没执行完的问题。</li>
 </ul>
-<h3 id="十三、什么是bigkey？会有什么影响？"><a href="#十三、什么是bigkey？会有什么影响？" class="headerlink" title="十三、什么是bigkey？会有什么影响？"></a>十三、什么是bigkey？会有什么影响？</h3><ol>
+<h1 id="十三、什么是bigkey？会有什么影响？"><a href="#十三、什么是bigkey？会有什么影响？" class="headerlink" title="十三、什么是bigkey？会有什么影响？"></a>十三、什么是bigkey？会有什么影响？</h1><ol>
 <li>概念：</li>
 </ol>
 <ul>
@@ -1263,7 +1263,7 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
 <li><p>解决方案：value拆分</p>
 </li>
 </ol>
-<h3 id="十四、Redis如何解决key冲突"><a href="#十四、Redis如何解决key冲突" class="headerlink" title="十四、Redis如何解决key冲突"></a>十四、Redis如何解决key冲突</h3><ol>
+<h1 id="十四、Redis如何解决key冲突"><a href="#十四、Redis如何解决key冲突" class="headerlink" title="十四、Redis如何解决key冲突"></a>十四、Redis如何解决key冲突</h1><ol>
 <li>业务隔离</li>
 <li>key的设计</li>
 </ol>
@@ -1283,7 +1283,7 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
 <ul>
 <li>key拼接时间戳，根据时间戳保证多个客户端的业务执行顺序</li>
 </ul>
-<h3 id="十五、怎么提高换成命中率"><a href="#十五、怎么提高换成命中率" class="headerlink" title="十五、怎么提高换成命中率"></a>十五、怎么提高换成命中率</h3><ol>
+<h1 id="十五、怎么提高换成命中率"><a href="#十五、怎么提高换成命中率" class="headerlink" title="十五、怎么提高换成命中率"></a>十五、怎么提高换成命中率</h1><ol>
 <li>提前加载</li>
 <li>增加缓存的存储空间，增加缓存的数据</li>
 <li>调整缓存的存储类型</li>
@@ -1300,7 +1300,7 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
 </ul>
 </li>
 </ol>
-<h3 id="十六、Redis持久化方式有哪些方式？有什么区别？"><a href="#十六、Redis持久化方式有哪些方式？有什么区别？" class="headerlink" title="十六、Redis持久化方式有哪些方式？有什么区别？"></a>十六、Redis持久化方式有哪些方式？有什么区别？</h3><ol>
+<h1 id="十六、Redis持久化方式有哪些方式？有什么区别？"><a href="#十六、Redis持久化方式有哪些方式？有什么区别？" class="headerlink" title="十六、Redis持久化方式有哪些方式？有什么区别？"></a>十六、Redis持久化方式有哪些方式？有什么区别？</h1><ol>
 <li>持久化</li>
 </ol>
 <ul>
@@ -1337,7 +1337,7 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
 
 </li>
 </ul>
-<h3 id="十七、为什么Redis需要把所有数据放到内存中？"><a href="#十七、为什么Redis需要把所有数据放到内存中？" class="headerlink" title="十七、为什么Redis需要把所有数据放到内存中？"></a>十七、为什么Redis需要把所有数据放到内存中？</h3><ol>
+<h1 id="十七、为什么Redis需要把所有数据放到内存中？"><a href="#十七、为什么Redis需要把所有数据放到内存中？" class="headerlink" title="十七、为什么Redis需要把所有数据放到内存中？"></a>十七、为什么Redis需要把所有数据放到内存中？</h1><ol>
 <li><p>内存访问与磁盘访问的差距：</p>
 <img width="100" src="/medias/avatars/fa449af16b4d41b0898eaa3e68b85f11.png">
 
@@ -1355,7 +1355,7 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
 <li><p>通过内存淘汰策略，确保整体服务正常运行</p>
 </li>
 </ol>
-<h3 id="十八、如何保证缓存与数据库双写一致性？"><a href="#十八、如何保证缓存与数据库双写一致性？" class="headerlink" title="十八、如何保证缓存与数据库双写一致性？"></a>十八、如何保证缓存与数据库双写一致性？</h3><ol>
+<h1 id="十八、如何保证缓存与数据库双写一致性？"><a href="#十八、如何保证缓存与数据库双写一致性？" class="headerlink" title="十八、如何保证缓存与数据库双写一致性？"></a>十八、如何保证缓存与数据库双写一致性？</h1><ol>
 <li>新增数据类</li>
 </ol>
 <ul>
@@ -1413,7 +1413,7 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
 <ul>
 <li>异步删除、更新缓存，<ul>
 <li>可以使用canal将binlog日志采集发送到MQ队列中。</li>
-<li>通过ACK机制确认处理这条更新消息，删除缓存，保证数据一致性。<h3 id="十九、Redis集群方案"><a href="#十九、Redis集群方案" class="headerlink" title="十九、Redis集群方案"></a>十九、Redis集群方案</h3></li>
+<li>通过ACK机制确认处理这条更新消息，删除缓存，保证数据一致性。<h1 id="十九、Redis集群方案"><a href="#十九、Redis集群方案" class="headerlink" title="十九、Redis集群方案"></a>十九、Redis集群方案</h1></li>
 </ul>
 </li>
 <li>分布式解决方案 ：Redis Cluster</li>
@@ -1454,19 +1454,19 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
 <li>（3）5.0之后搭建功能合并至redis-cli。</li>
 <li>节点数至少奇数点个，官方推荐三主三从。</li>
 </ul>
-<h3 id="二十、Redis集群方案什么情况下会导致整个集群不可用？"><a href="#二十、Redis集群方案什么情况下会导致整个集群不可用？" class="headerlink" title="二十、Redis集群方案什么情况下会导致整个集群不可用？"></a>二十、Redis集群方案什么情况下会导致整个集群不可用？</h3><ul>
+<h1 id="二十、Redis集群方案什么情况下会导致整个集群不可用？"><a href="#二十、Redis集群方案什么情况下会导致整个集群不可用？" class="headerlink" title="二十、Redis集群方案什么情况下会导致整个集群不可用？"></a>二十、Redis集群方案什么情况下会导致整个集群不可用？</h1><ul>
 <li>A、B、C三个节点集群，B节点失败（主故障，且没有替代方案）整个集群都是不可用的。</li>
 <li>集群不可用判定：</li>
 <li>保护措施：默认情况下当16384个槽点任何一个没有指派到节点时，整个集群不可用。</li>
 <li>主节点下线-&gt;故障发现-&gt;自动完成转移期间，整个集群为不可用状态。</li>
 <li>可用通过设置cluster-require-full-coverage配置为no：主节点故障时，不影响其他主节点的可用性。</li>
 </ul>
-<h3 id="二十一、Redis集群会有写操作丢失吗？为什么？"><a href="#二十一、Redis集群会有写操作丢失吗？为什么？" class="headerlink" title="二十一、Redis集群会有写操作丢失吗？为什么？"></a>二十一、Redis集群会有写操作丢失吗？为什么？</h3><ul>
+<h1 id="二十一、Redis集群会有写操作丢失吗？为什么？"><a href="#二十一、Redis集群会有写操作丢失吗？为什么？" class="headerlink" title="二十一、Redis集群会有写操作丢失吗？为什么？"></a>二十一、Redis集群会有写操作丢失吗？为什么？</h1><ul>
 <li>Redis无法保证数据的强一致性</li>
 <li>一般只能向主节点写入数据，再异步同步到子节点</li>
 <li>此时如果响应给客户端后还未异步同步成功时，主节点宕机了，子节点升至主节点，此时就会出现写入操作丢失。</li>
 </ul>
-<h3 id="二十二、Redis常见性能问题和解决方案"><a href="#二十二、Redis常见性能问题和解决方案" class="headerlink" title="二十二、Redis常见性能问题和解决方案"></a>二十二、Redis常见性能问题和解决方案</h3><ol>
+<h1 id="二十二、Redis常见性能问题和解决方案"><a href="#二十二、Redis常见性能问题和解决方案" class="headerlink" title="二十二、Redis常见性能问题和解决方案"></a>二十二、Redis常见性能问题和解决方案</h1><ol>
 <li>持久化 性能问题</li>
 </ol>
 <ul>
@@ -1479,7 +1479,7 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
 <li>尽量避免主库压力过大，增加从库</li>
 <li>主从复制 尽量不要使用网状结构、线性结构</li>
 </ol>
-<h3 id="二十三、热点数据和冷数据"><a href="#二十三、热点数据和冷数据" class="headerlink" title="二十三、热点数据和冷数据"></a>二十三、热点数据和冷数据</h3><ol>
+<h1 id="二十三、热点数据和冷数据"><a href="#二十三、热点数据和冷数据" class="headerlink" title="二十三、热点数据和冷数据"></a>二十三、热点数据和冷数据</h1><ol>
 <li>热数据</li>
 </ol>
 <ul>
@@ -1495,7 +1495,7 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
 <li>访问频次少</li>
 <li>不需要放缓存</li>
 </ul>
-<h3 id="二十四、什么情况下可能会导致Redis阻塞"><a href="#二十四、什么情况下可能会导致Redis阻塞" class="headerlink" title="二十四、什么情况下可能会导致Redis阻塞"></a>二十四、什么情况下可能会导致Redis阻塞</h3><ol>
+<h1 id="二十四、什么情况下可能会导致Redis阻塞"><a href="#二十四、什么情况下可能会导致Redis阻塞" class="headerlink" title="二十四、什么情况下可能会导致Redis阻塞"></a>二十四、什么情况下可能会导致Redis阻塞</h1><ol>
 <li>客户端阻塞</li>
 </ol>
 <ul>
@@ -1543,7 +1543,7 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
 </ol>
 </li>
 </ul>
-<h3 id="二十六、-Redis-高可用"><a href="#二十六、-Redis-高可用" class="headerlink" title="二十六、 Redis 高可用"></a>二十六、 Redis 高可用</h3><ul>
+<h1 id="二十六、-Redis-高可用"><a href="#二十六、-Redis-高可用" class="headerlink" title="二十六、 Redis 高可用"></a>二十六、 Redis 高可用</h1><ul>
 <li>高可用：数据不能丢失（尽量减少丢失），保证Redis</li>
 <li>26.1 主从模式</li>
 <li>部署多台Redis服务器，主从复制以保证数据副本一致。主库通过将RDB文件发送给从库实现复制。</li>
@@ -1567,14 +1567,14 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
 <li>本质：Redis Cluster实现了Redis的分布式存储，每个节点存储不同的数据，实现数据分片。</li>
 <li>引入Slot槽实现数据分片，每个节点分配一个Slot区间，当我们存取Key的时候，Redis根据key计算得到Slot值，找到对应的节点进行读写。多主多从。</li>
 </ul>
-<h3 id="二十七、布隆过滤器"><a href="#二十七、布隆过滤器" class="headerlink" title="二十七、布隆过滤器"></a>二十七、布隆过滤器</h3><ul>
+<h1 id="二十七、布隆过滤器"><a href="#二十七、布隆过滤器" class="headerlink" title="二十七、布隆过滤器"></a>二十七、布隆过滤器</h1><ul>
 <li>布隆过滤器可以应对缓存穿透问题</li>
 <li>数据结构：一个很长的二进制向量和一组Hash映射函数组成。</li>
 <li>作用：检索一个元素是否在一个集合中，空间查询效率比一般的算法要好的多。</li>
 <li>缺点：有一定误识别率和删除困难。</li>
 <li>原理：集合A中有n个元素，利用K个哈希散列函数，将A中每个元素映射到一个长度为a位的数组B中不同位置上。这些位置上的二进制数均设置为1。经过这个K个哈希散列函数映射后，发现其k个位置上的二进制数全部为1，这个元素很可能属于集合A。</li>
 </ul>
-<h3 id="二十八、Redis的理解"><a href="#二十八、Redis的理解" class="headerlink" title="二十八、Redis的理解"></a>二十八、Redis的理解</h3><ul>
+<h1 id="二十八、Redis的理解"><a href="#二十八、Redis的理解" class="headerlink" title="二十八、Redis的理解"></a>二十八、Redis的理解</h1><ul>
 <li>本质：基于Key-Value存储结构的非关系型数据库</li>
 <li>数据类型：提供5种基本数据类型，String、set、zset、list、Map。</li>
 <li>性能：基于内存存储，并且在数据结构上做了大量优化，IO性能较好。</li>
@@ -2169,19 +2169,19 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/22/nvm/">
+                <a href="/2024/01/22/echarts/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Nvm工具">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="ECharts">
                         
-                        <span class="card-title">Nvm工具</span>
+                        <span class="card-title">ECharts</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            提供了控制node版本
+                            提供了丰富的图表类型和交互能力，使用户能够通过简单的配置生成各种各样的图表，包括但不限于折线图、柱状图、散点图、饼图、雷达图、地图等。ECharts 遵循 Apache-2.0 开源协议，免费商用。
                         
                     </div>
                     <div class="publish-info">
@@ -2192,8 +2192,8 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Nvm/" class="post-category" target="_blank">
-                                    Nvm
+                            <a href="/categories/ECharts/" class="post-category" target="_blank">
+                                    ECharts
                                 </a>
                             
                             
@@ -2203,12 +2203,12 @@ Redis作为K-V键值对型的内存数据库，所有键值都是用字典来存
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/node/" target="_blank">
-                        <span class="chip bg-color">node</span>
+                    <a href="/tags/ECharts/" target="_blank">
+                        <span class="chip bg-color">ECharts</span>
                     </a>
                     
-                    <a href="/tags/Nvm/" target="_blank">
-                        <span class="chip bg-color">Nvm</span>
+                    <a href="/tags/JavaScript/" target="_blank">
+                        <span class="chip bg-color">JavaScript</span>
                     </a>
                     
                 </div>
